@@ -7,17 +7,25 @@ from foundations.oophelpers.observersubject import Subject
 
 @Pyro4.expose
 class Client(Subject):
-
     # eventi che può lanciare il proxy
     MAPREADYEVENT: str = "mapready"
     GAMEREADYEVENT: str = "gameready"
 
     def __init__(self, userid: str):
         self._userid: str = userid
+        self._clientid: str = None
 
         self._gamehandlerid: str = None
 
         self._eventlisteners: dict = dict()
+
+    @property
+    def clientid(self) -> str:
+        return self._clientid
+
+    @clientid.setter
+    def clientid(self, value: str):
+        self._clientid = value
 
     @property
     def playerid(self) -> str:
@@ -49,7 +57,6 @@ class Client(Subject):
         self._eventlisteners[eventid] = callback
 
     def _notify(self, event: str):
-
         def threadrun(*args):
             this = args[0]
             operation: callable = args[1]

@@ -13,7 +13,7 @@ class ServerWrapper(metaclass=SingletonMetaclass):
         ###
 
         self._matchmakinghandler: MatchMakingHandler = None
-        self._clientid: str = None
+
         self._client: Client = None
 
     def init(self, manager: ICorbaManager):
@@ -21,8 +21,8 @@ class ServerWrapper(metaclass=SingletonMetaclass):
         self._matchmakinghandler = self._corbamanager.getFromSystem(self._matchmakinghandlerid)
 
     def register(self, client: Client):
-        self._client = Client
-        self.clientid = self._corbamanager.remotize(client)
+        self._client: Client = client
+        self._client.clientid = self._corbamanager.remotize(client)
 
     def makeNewGame(self, modeid: str, isranked: bool):
-        self._matchmakinghandler.makeNewGame(self.clientid, modeid, isranked)
+        self._matchmakinghandler.makeNewGame(self._client.clientid, modeid, isranked)
