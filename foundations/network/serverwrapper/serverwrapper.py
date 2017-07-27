@@ -4,7 +4,7 @@ from foundations.oophelpers.singleton import SingletonMetaclass
 from control.gamemanageusecase.matchmakinghandler import MatchMakingHandler
 
 
-class NetworkSendingAdapter(metaclass=SingletonMetaclass):
+class ServerWrapper(metaclass=SingletonMetaclass):
     def __init__(self):
         self._corbamanager: ICorbaManager = None
 
@@ -16,11 +16,9 @@ class NetworkSendingAdapter(metaclass=SingletonMetaclass):
         self._clientid: str = None
         self._client: Client = None
 
-
     def init(self, manager: ICorbaManager):
         self._corbamanager = manager
         self._matchmakinghandler = self._corbamanager.getFromSystem(self._matchmakinghandlerid)
-
 
     def register(self, client: Client):
         self._client = Client

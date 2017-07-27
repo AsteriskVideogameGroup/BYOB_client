@@ -12,8 +12,7 @@ class Client(Subject):
     MAPREADYEVENT: str = "mapready"
     GAMEREADYEVENT: str = "gameready"
 
-    def __init__(self, clientid: str, userid: str):
-        self._clientid: str = clientid
+    def __init__(self, userid: str):
         self._userid: str = userid
 
         self._gamehandlerid: str = None
@@ -21,12 +20,12 @@ class Client(Subject):
         self._eventlisteners: dict = dict()
 
     @property
-    def clientid(self) -> str:
-        return self._clientid
-
-    @property
     def playerid(self) -> str:
         return self._userid
+
+    @playerid.setter
+    def playerid(self, value: str):
+        self._userid = value
 
     @property
     def gamehandler(self) -> str:
