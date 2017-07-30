@@ -26,8 +26,8 @@ manager: ViewManagerStateMachine = ViewManagerStateMachine()
 viewcomposer: IViewComposer = PyGameComposer()
 initialstate: IVisualState = ExampleVisualState()
 
-
 manager.initialize(server, viewcomposer, initialstate)
+
 print("pure qui ok")
 
 manager.input(GameMessages.GAMECREATED)

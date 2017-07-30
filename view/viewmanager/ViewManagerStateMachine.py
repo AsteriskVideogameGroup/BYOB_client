@@ -28,6 +28,9 @@ class ViewManagerStateMachine(metaclass=SingletonMetaclass):
         # inizializzazione dello stato
         self.currentstate.initialize(server, viewcomposer)
 
+        # inizializzazione del view composer
+        viewcomposer.init(self.input)
+
         # memorizzazione dei riferimenti agli oggetti server e viewcomposer
         # serviranno per i cambiamenti di stato
         self._server = server

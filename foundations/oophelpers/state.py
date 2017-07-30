@@ -9,5 +9,5 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def update(self, input: GameMessages) -> 'State':
+    def update(self, messageinput: GameMessages) -> 'State':
         pass

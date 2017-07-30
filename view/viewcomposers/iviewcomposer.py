@@ -1,15 +1,16 @@
 import abc
 from typing import Callable
 
-from view.viewcomposers.enumviews import EnumViews
+from foundations.sysmessages.gamemessages import GameMessages
+from view.viewcomposers.viewsnames import ViewNames
 
 
 class IViewComposer(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
-    def init(self, eventlistener: Callable[[str], None]):
+    def init(self, eventlistener: Callable[[object, GameMessages], None]):
         pass
 
     @abc.abstractmethod
-    def show(self, chosenview: EnumViews):
+    def show(self, chosenview: ViewNames):
         pass
