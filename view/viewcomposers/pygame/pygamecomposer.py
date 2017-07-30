@@ -1,5 +1,4 @@
-from threading import Semaphore, Thread
-from time import sleep
+from threading import Thread, Lock
 from typing import Callable
 
 from foundations.sysmessages.gamemessages import GameMessages
@@ -15,7 +14,7 @@ class PyGameComposer(IViewComposer):
         self._testo: str = "iniziale"
 
         # semaforo di mutua esclusione
-        self._semaphore: Semaphore = Semaphore()
+        self._semaphore: Lock = Lock()
 
     def init(self, eventhandlercallback: Callable[[object, GameMessages], None]):
         self._observercallback = eventhandlercallback
