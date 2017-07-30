@@ -1,3 +1,5 @@
+from time import sleep
+
 from foundations.network.clienthandling.client import Client
 from foundations.network.corba.corbamanagerfactory import CorbaManagerFactory
 from foundations.network.corba.icorbamanager import ICorbaManager
@@ -26,12 +28,13 @@ manager: ViewManagerStateMachine = ViewManagerStateMachine()
 viewcomposer: IViewComposer = PyGameComposer()
 initialstate: IVisualState = ExampleVisualState()
 
+#sleep(3)
 manager.initialize(server, viewcomposer, initialstate)
 
 print("pure qui ok")
 
 manager.input(GameMessages.GAMECREATED)
 
-
+print("pure qui ok 2")
 
 

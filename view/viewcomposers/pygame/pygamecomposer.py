@@ -1,4 +1,5 @@
 from threading import Semaphore, Thread
+from time import sleep
 from typing import Callable
 
 from foundations.sysmessages.gamemessages import GameMessages
@@ -24,6 +25,8 @@ class PyGameComposer(IViewComposer):
     def show(self, chosenview: ViewNames):
         self._semaphore.acquire()
         self._testo = "testo modificato"
+        print("ho modificato!")
+        #sleep(10)
         self._semaphore.release()
 
     def _startloop(self):
