@@ -1,4 +1,3 @@
-
 from threading import Thread
 from typing import List, Callable
 
@@ -55,10 +54,10 @@ class Client(Subject):
     def notifyMapReady(self):
         self._notify(GameMessages.GAMECREATED)
 
-    def detachEventListerners(self, callback: Callable[str]):
+    def detachEventListerners(self, callback: Callable[[str], None]):
         self._eventlisteners.remove(callback)
 
-    def registerEventListener(self, callback: Callable[str]):
+    def registerEventListener(self, callback: Callable[[str], None]):
         self._eventlisteners.append(callback)
 
     def _notify(self, message: GameMessages):
