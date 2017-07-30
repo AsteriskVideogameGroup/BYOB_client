@@ -8,6 +8,6 @@ from view.viewcomposers.iviewcomposer import IViewComposer
 class IVisualState(State):
 
     @abc.abstractmethod
-    def init(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
         pass
 

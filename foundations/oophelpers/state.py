@@ -7,5 +7,5 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def update(self, input: str) -> 'State':
+    def update(self, input: int) -> 'State':
         pass
