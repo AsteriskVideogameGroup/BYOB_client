@@ -13,15 +13,15 @@ class Client(Subject):
     MAPREADYEVENT: str = "mapready"
     GAMEREADYEVENT: str = "gameready\""""
 
-    def __init__(self, userid: str):
-        self._userid: str = userid
+    def __init__(self):
+        #self._userid: str = userid
         self._clientid: str = None
 
         self._gamehandlerid: str = None
 
         # self._eventlisteners: dict = dict()
 
-        self._eventlisteners: List[Callable[str]] = list()
+        self._eventlisteners: List[Callable[[object, GameMessages], None]] = list()
 
     @property
     def clientid(self) -> str:
@@ -31,13 +31,13 @@ class Client(Subject):
     def clientid(self, value: str):
         self._clientid = value
 
-    @property
+    '''@property
     def playerid(self) -> str:
         return self._userid
 
     @playerid.setter
     def playerid(self, value: str):
-        self._userid = value
+        self._userid = value'''
 
     @property
     def gamehandler(self) -> str:
@@ -54,10 +54,10 @@ class Client(Subject):
     def notifyMapReady(self):
         self._notify(GameMessages.GAMECREATED)
 
-    def detachEventListerners(self, callback: Callable[[str], None]):
+    def detachEventListerners(self, callback: Callable[[object, GameMessages], None]):
         self._eventlisteners.remove(callback)
 
-    def registerEventListener(self, callback: Callable[[str], None]):
+    def registerEventListener(self, callback: Callable[[object, GameMessages], None]):
         self._eventlisteners.append(callback)
 
     def _notify(self, message: GameMessages):

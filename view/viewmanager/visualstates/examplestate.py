@@ -22,6 +22,6 @@ class ExampleVisualState(IVisualState):
     def update(self, messageinput: GameMessages) -> IVisualState:
         print("updetato")
 
-        self._viewcomposer.show(ViewNames.PROVA)
+        self._viewcomposer.show(ViewNames.PROVA)  # TODO togliere
 
         return None

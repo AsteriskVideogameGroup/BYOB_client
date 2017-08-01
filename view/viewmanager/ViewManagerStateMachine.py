@@ -28,13 +28,17 @@ class ViewManagerStateMachine(metaclass=SingletonMetaclass):
         # inizializzazione dello stato
         self.currentstate.initialize(server, viewcomposer)
 
-        # inizializzazione del view composer
-        viewcomposer.init(self.input)
-
         # memorizzazione dei riferimenti agli oggetti server e viewcomposer
         # serviranno per i cambiamenti di stato
         self._server = server
         self._viewcomposer = viewcomposer
+
+        # la macchina a stati si mette in ascolto dei messaggi da parte del server
+        # self._server.addListener(self.input) # TODO deve essere decommentato
+
+        # inizializzazione del view composer
+        # la macchina a stati si mette in ascolto degli input utente
+        viewcomposer.init(self.input)
 
         # run dello stato iniziale
         self.currentstate.run()
@@ -46,9 +50,8 @@ class ViewManagerStateMachine(metaclass=SingletonMetaclass):
         if newstate is not None:
             self.currentstate = newstate
             self.currentstate.initialize(self._server, self._viewcomposer)
+            self.currentstate.run()  # esecuzione del nuovo stato
         else:
             print("Nessun cambiamento di stato")
 
-        # esecuzione dello stato
-        self.currentstate.run()
 

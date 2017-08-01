@@ -34,6 +34,6 @@ class PyroCorbaManager(ICorbaManager):
         if objname is None:
             objname = str(uri.object)
 
-        self._ns.register(objname, uri)
+        self._ns.registerClient(objname, uri)
 
         return objname

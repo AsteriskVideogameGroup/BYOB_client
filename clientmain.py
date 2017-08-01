@@ -14,26 +14,25 @@ from view.viewmanager.visualstates.interfacevisualstate import IVisualState
 corba: ICorbaManager = CorbaManagerFactory().getCorbaManager()
 corba.init()
 
-client: Client = Client("user1")
+client: Client = Client()
 
 server: ServerWrapper = ServerWrapper()
 
 server.init(corba)
-server.register(client)
+server.registerClient(client)
 
 print("tutto ok fin qui")
 
 
-manager: ViewManagerStateMachine = ViewManagerStateMachine()
+machine: ViewManagerStateMachine = ViewManagerStateMachine()
 viewcomposer: IViewComposer = PyGameComposer()
 initialstate: IVisualState = ExampleVisualState()
 
-#sleep(3)
-manager.initialize(server, viewcomposer, initialstate)
+machine.initialize(server, viewcomposer, initialstate)
 
 print("pure qui ok")
 
-manager.input(GameMessages.GAMECREATED)
+machine.input(GameMessages.GAMECREATED)
 
 print("pure qui ok 2")
 

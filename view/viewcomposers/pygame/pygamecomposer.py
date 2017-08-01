@@ -11,7 +11,7 @@ class PyGameComposer(IViewComposer):
         # procedura da chiamare per notificare un evento
         self._observercallback: Callable[[str], None] = None
 
-        self._testo: str = "iniziale"
+        self._testo: str = "iniziale"  # TODO togliere
 
         # semaforo di mutua esclusione
         self._semaphore: Lock = Lock()
@@ -31,5 +31,10 @@ class PyGameComposer(IViewComposer):
     def _startloop(self):
         while True:
             self._semaphore.acquire()
-            print("Testo da mostrare: " + self._testo)
+            # print("Testo da mostrare: " + self._testo)
+
+            # TODO mostrare il template print
+
+            # TODO gestire i comandi da tastiera getinput
+
             self._semaphore.release()

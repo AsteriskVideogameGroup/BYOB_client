@@ -14,3 +14,8 @@ class IViewComposer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def show(self, chosenview: ViewNames):
         pass
+
+    @abc.abstractmethod
+    def setAssets(self, **kwargs):
+        pass
+
