@@ -1,9 +1,10 @@
 import abc
+from typing import Callable
 
 
 class ITemplate(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def initialize(self, screen: IScreen):
+    def initialize(self, screen: IScreen, observercallback: Callable[[str], None]):
         pass
 
     @abc.abstractmethod
