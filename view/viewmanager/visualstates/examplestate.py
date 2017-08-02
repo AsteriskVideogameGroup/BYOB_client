@@ -2,10 +2,10 @@ from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.viewsnames import ViewNames
 from view.viewcomposers.iviewcomposer import IViewComposer
-from view.viewmanager.visualstates.interfacevisualstate import IVisualState
+from view.viewmanager.visualstates.iclientstate import IClientState
 
 
-class ExampleVisualState(IVisualState):
+class ExampleClientState(IClientState):
 
     def __init__(self):
         self._viewcomposer: IViewComposer = None
@@ -19,7 +19,7 @@ class ExampleVisualState(IVisualState):
         self._viewcomposer = viewcomposer
         self._server = gameserver
 
-    def update(self, messageinput: GameMessages) -> IVisualState:
+    def update(self, messageinput: GameMessages) -> IClientState:
         print("updetato")
 
         self._viewcomposer.show(ViewNames.PROVA)  # TODO togliere

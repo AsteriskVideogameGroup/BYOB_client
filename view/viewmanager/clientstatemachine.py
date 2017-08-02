@@ -2,26 +2,26 @@ from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.singleton import SingletonMetaclass
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
-from view.viewmanager.visualstates.interfacevisualstate import IVisualState
+from view.viewmanager.visualstates.iclientstate import IClientState
 
 
-class ViewManagerStateMachine(metaclass=SingletonMetaclass):
+class ClientStateMachine(metaclass=SingletonMetaclass):
     """"""
 
     def __init__(self):
         self._server: ServerWrapper = None
         self._viewcomposer: IViewComposer = None
-        self._state: IVisualState = None
+        self._state: IClientState = None
 
     @property
-    def currentstate(self) -> IVisualState:
+    def currentstate(self) -> IClientState:
         return self._state
 
     @currentstate.setter
-    def currentstate(self, newstate: IVisualState):
+    def currentstate(self, newstate: IClientState):
         self._state = newstate
 
-    def initialize(self, server: ServerWrapper, viewcomposer: IViewComposer, initialstate: IVisualState):
+    def initialize(self, server: ServerWrapper, viewcomposer: IViewComposer, initialstate: IClientState):
         # assegnazione dello stato iniziale alla macchina
         self.currentstate = initialstate
 
@@ -44,7 +44,7 @@ class ViewManagerStateMachine(metaclass=SingletonMetaclass):
         self.currentstate.run()
 
     def input(self, message: GameMessages):
-        newstate: IVisualState = self.currentstate.update(message)
+        newstate: IClientState = self.currentstate.update(message)
 
         # lo stato potrebbe essere cambiato
         if newstate is not None:

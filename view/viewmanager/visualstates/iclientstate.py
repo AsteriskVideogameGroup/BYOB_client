@@ -5,7 +5,7 @@ from foundations.oophelpers.state import State
 from view.viewcomposers.iviewcomposer import IViewComposer
 
 
-class IVisualState(State):
+class IClientState(State):
 
     @abc.abstractmethod
     def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):

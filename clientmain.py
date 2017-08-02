@@ -7,9 +7,9 @@ from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.pygame.pygamecomposer import PyGameComposer
-from view.viewmanager.ViewManagerStateMachine import ViewManagerStateMachine
-from view.viewmanager.visualstates.examplestate import ExampleVisualState
-from view.viewmanager.visualstates.interfacevisualstate import IVisualState
+from view.viewmanager.clientstatemachine import ClientStateMachine
+from view.viewmanager.visualstates.examplestate import ExampleClientState
+from view.viewmanager.visualstates.iclientstate import IClientState
 
 corba: ICorbaManager = CorbaManagerFactory().getCorbaManager()
 corba.init()
@@ -24,9 +24,9 @@ server.registerClient(client)
 print("tutto ok fin qui")
 
 
-machine: ViewManagerStateMachine = ViewManagerStateMachine()
+machine: ClientStateMachine = ClientStateMachine()
 viewcomposer: IViewComposer = PyGameComposer()
-initialstate: IVisualState = ExampleVisualState()
+initialstate: IClientState = ExampleClientState()
 
 machine.initialize(server, viewcomposer, initialstate)
 
