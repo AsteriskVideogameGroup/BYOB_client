@@ -1,18 +1,18 @@
 import abc
-from typing import Callable
+from typing import Callable, Dict
 
 from foundations.sysmessages.gamemessages import GameMessages
-from view.viewcomposers.viewsnames import ViewNames
+from view.viewcomposers.templates import Templates
 
 
 class IViewComposer(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
-    def init(self, eventlistener: Callable[[object, GameMessages], None]):
+    def init(self, eventlistener: Callable[[object, GameMessages, Dict[str, any]], None]):
         pass
 
     @abc.abstractmethod
-    def show(self, chosenview: ViewNames):
+    def show(self, chosenview: Templates):
         pass
 
     @abc.abstractmethod

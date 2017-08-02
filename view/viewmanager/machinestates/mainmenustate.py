@@ -19,7 +19,7 @@ class MainMenuState(IClientState):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
-    def update(self, messageinput: GameMessages) -> IClientState:
+    def update(self, messageinput: GameMessages, infos: Dict[str, any] = None) -> IClientState:
         ''''''  # TODO manca un' eventuale logica di update
 
         newstate: IClientState = None

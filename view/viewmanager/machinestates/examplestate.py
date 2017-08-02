@@ -1,6 +1,6 @@
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
-from view.viewcomposers.viewsnames import ViewNames
+from view.viewcomposers.templates import Templates
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewmanager.machinestates.iclientstate import IClientState
 
@@ -22,6 +22,6 @@ class ExampleClientState(IClientState):
     def update(self, messageinput: GameMessages) -> IClientState:
         print("updetato")
 
-        self._viewcomposer.show(ViewNames.PROVA)  # TODO togliere
+        self._viewcomposer.show(Templates.PROVA)  # TODO togliere
 
         return None

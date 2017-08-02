@@ -1,3 +1,5 @@
+from typing import Dict
+
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
@@ -19,7 +21,7 @@ class MakeNewUnrankedGameState(IClientState):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
-    def update(self, messageinput: GameMessages) -> IClientState:
+    def update(self, messageinput: GameMessages, infos: Dict[str, any] = None) -> IClientState:
         newstate: IClientState = None
 
         # TODO gestione stati successivi

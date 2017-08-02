@@ -1,3 +1,5 @@
+from typing import Dict
+
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.singleton import SingletonMetaclass
 from foundations.sysmessages.gamemessages import GameMessages
@@ -43,8 +45,8 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         # run dello stato iniziale
         self.currentstate.run()
 
-    def input(self, message: GameMessages):
-        newstate: IClientState = self.currentstate.update(message)
+    def input(self, message: GameMessages, infos: Dict[str, any] = None):
+        newstate: IClientState = self.currentstate.update(message, infos)
 
         # lo stato potrebbe essere cambiato
         if newstate is not None:

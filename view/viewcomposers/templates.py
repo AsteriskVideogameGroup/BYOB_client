@@ -1,5 +1,5 @@
 from enum import Enum
 
 
-class ViewNames(Enum):
+class Templates(Enum):
     PROVA: int = 1  # TODO eliminare

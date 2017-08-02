@@ -1,10 +1,15 @@
 import abc
-from typing import Callable
+from typing import Callable, Dict
+
+import pygame
+
+from foundations.sysmessages.gamemessages import GameMessages
 
 
 class ITemplate(metaclass=abc.ABCMeta):
     @abc.abstractmethod
-    def initialize(self, screen: IScreen, observercallback: Callable[[str], None]):
+    def initialize(self, screen: pygame.display,
+                   observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
         pass
 
     @abc.abstractmethod
