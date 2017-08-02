@@ -7,6 +7,7 @@ from view.viewcomposers.iviewcomposer import IViewComposer
 
 
 class PyGameComposer(IViewComposer):
+
     def __init__(self):
         # procedura da chiamare per notificare un evento
         self._observercallback: Callable[[str], None] = None
@@ -27,6 +28,9 @@ class PyGameComposer(IViewComposer):
         print("ho modificato!")
         #sleep(10)
         self._semaphore.release()
+
+    def setAssets(self, **kwargs):
+        pass
 
     def _startloop(self):
         while True:

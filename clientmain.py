@@ -8,8 +8,9 @@ from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.pygame.pygamecomposer import PyGameComposer
 from view.viewmanager.clientstatemachine import ClientStateMachine
-from view.viewmanager.visualstates.examplestate import ExampleClientState
-from view.viewmanager.visualstates.iclientstate import IClientState
+from view.viewmanager.machinestates.examplestate import ExampleClientState
+from view.viewmanager.machinestates.iclientstate import IClientState
+from view.viewmanager.machinestates.mainmenustate import MainMenuState
 
 corba: ICorbaManager = CorbaManagerFactory().getCorbaManager()
 corba.init()
@@ -26,13 +27,13 @@ print("tutto ok fin qui")
 
 machine: ClientStateMachine = ClientStateMachine()
 viewcomposer: IViewComposer = PyGameComposer()
-initialstate: IClientState = ExampleClientState()
+initialstate: IClientState = MainMenuState()
 
 machine.initialize(server, viewcomposer, initialstate)
 
 print("pure qui ok")
 
-machine.input(GameMessages.GAMECREATED)
+machine.input(GameMessages.INITUNRANKEDGAME)
 
 print("pure qui ok 2")
 

@@ -2,7 +2,7 @@ from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.singleton import SingletonMetaclass
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
-from view.viewmanager.visualstates.iclientstate import IClientState
+from view.viewmanager.machinestates.iclientstate import IClientState
 
 
 class ClientStateMachine(metaclass=SingletonMetaclass):
