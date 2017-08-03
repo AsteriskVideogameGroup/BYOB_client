@@ -24,9 +24,11 @@ class MainMenuState(IClientState):
 
         newstate: IClientState = None
 
-        if messageinput == GameMessages.INITUNRANKEDGAME:
-            newstate = MakeNewUnrankedGameState()
-            newstate.initialize(self._server, self._viewcomposer)
+        if messageinput == GameMessages.NEXT:
+            print("ho ricevuto il messaggio next")
+
+        if messageinput == GameMessages.PREVIOUS:
+            print("ho ricevuto il messaggio prev")
 
         elif messageinput == GameMessages.EXITPROGRAM:
             print("sto uscendo")

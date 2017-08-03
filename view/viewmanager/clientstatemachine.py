@@ -40,12 +40,13 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
 
         # inizializzazione del view composer
         # la macchina a stati si mette in ascolto degli input utente
-        viewcomposer.init(self.input)
+        self._viewcomposer.init(self.input)
 
         # run dello stato iniziale
         self.currentstate.run()
 
-        self._viewcomposer
+        # avvio del viewcomposer
+        self._viewcomposer.startWorking()
 
     def input(self, message: GameMessages):
         newstate: IClientState = self.currentstate.input(message)

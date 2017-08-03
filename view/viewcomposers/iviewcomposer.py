@@ -19,4 +19,7 @@ class IViewComposer(metaclass=abc.ABCMeta):
     def setAssets(self, **kwargs):
         pass
 
+    @abc.abstractmethod
+    def startWorking(self):
+        pass
 

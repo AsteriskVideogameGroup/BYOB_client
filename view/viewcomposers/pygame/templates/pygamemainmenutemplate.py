@@ -28,9 +28,12 @@ class PyGameMainMenuTemplate(ITemplate):
     def getInputs(self):
 
         for event in pygame.event.get():
-            continue
-
-        print("prova")
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+                print('Forward')
+                self._eventlistnercallback(GameMessages.NEXT)
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                print('Backward')
+                self._eventlistnercallback(GameMessages.PREVIOUS)
 
     def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]) -> ITemplate:
         self._screen = screen

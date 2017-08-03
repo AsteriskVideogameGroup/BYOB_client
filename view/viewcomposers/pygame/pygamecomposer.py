@@ -52,7 +52,7 @@ class PyGameComposer(IViewComposer):
     def setAssets(self, **kwargs):
         pass
 
-    def startloop(self):
+    def startWorking(self):
         while True:
             self._semaphore.acquire()
 
