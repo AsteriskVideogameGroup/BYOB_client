@@ -8,7 +8,6 @@ from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.pygame.pygamecomposer import PyGameComposer
 from view.viewmanager.clientstatemachine import ClientStateMachine
-from view.viewmanager.machinestates.examplestate import ExampleClientState
 from view.viewmanager.machinestates.iclientstate import IClientState
 from view.viewmanager.machinestates.mainmenustate import MainMenuState
 

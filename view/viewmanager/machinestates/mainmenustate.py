@@ -1,13 +1,12 @@
 import os
-from typing import Dict
-
-import sys
+from typing import List, Dict
 
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
+from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState
-from view.viewmanager.machinestates.makenewunrankedgamestate import MakeNewUnrankedGameState
+from view.viewmanager.machinestates.gameselectionstate import GameSelectionState
 
 
 class MainMenuState(IClientState):
@@ -15,20 +14,33 @@ class MainMenuState(IClientState):
         self._viewcomposer: IViewComposer = None
         self._server: ServerWrapper = None
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
+        self._currentselection: int = 0  # indice di selezione del giocatore
+
+        # stati successivi in base alla selezione
+        self._nextstates: Dict[int, IClientState] = {
+
+            0: GameSelectionState()
+
+        }
+
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, **data: dict):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
     def input(self, messageinput: GameMessages) -> IClientState:
-        ''''''  # TODO manca un' eventuale logica di update
 
         newstate: IClientState = None
 
         if messageinput == GameMessages.NEXT:
-            print("ho ricevuto il messaggio next")
+            self._currentselection = (self._currentselection + 1) % len(self._nextstates)
+            print("Selezione: {0}".format(self._currentselection))
 
-        if messageinput == GameMessages.PREVIOUS:
-            print("ho ricevuto il messaggio prev")
+        elif messageinput == GameMessages.PREVIOUS:
+            self._currentselection = (self._currentselection - 1) % len(self._nextstates)
+            print("Selezione: {0}".format(self._currentselection))
+
+        elif messageinput == GameMessages.ACCEPT:
+            newstate = self._nextstates.get(self._currentselection)
 
         elif messageinput == GameMessages.EXITPROGRAM:
             print("sto uscendo")
@@ -39,4 +51,6 @@ class MainMenuState(IClientState):
         return newstate
 
     def run(self):
-        print("logica di main menu state")
+
+        # visualizza il main menu
+        self._viewcomposer.show(Templates.MAINMENU)

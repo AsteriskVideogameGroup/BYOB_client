@@ -1,4 +1,3 @@
-import os
 from random import randint
 from typing import Callable
 
@@ -28,12 +27,15 @@ class PyGameMainMenuTemplate(ITemplate):
     def getInputs(self):
 
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
                 print('Forward')
                 self._eventlistnercallback(GameMessages.NEXT)
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
                 print('Backward')
                 self._eventlistnercallback(GameMessages.PREVIOUS)
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+                print('Selected')
+                self._eventlistnercallback(GameMessages.ACCEPT)
 
     def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]) -> ITemplate:
         self._screen = screen

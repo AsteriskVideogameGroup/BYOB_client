@@ -3,3 +3,4 @@ from enum import Enum
 
 class Templates(Enum):
     MAINMENU: int = 0
+    GAMESELECTION: int = 1

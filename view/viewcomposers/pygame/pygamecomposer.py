@@ -6,7 +6,8 @@ from pygame.time import Clock
 
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
-from view.viewcomposers.pygame.templates.pygamemainmenutemplate import PyGameMainMenuTemplate
+from view.viewcomposers.pygame.templates.pgmainmenutemplate import PyGameMainMenuTemplate
+from view.viewcomposers.pygame.templates.pggameselectiontemplate import PyGameGameSelectionTemplate
 from view.viewcomposers.templates import Templates
 from view.viewcomposers.iviewcomposer import IViewComposer
 
@@ -16,11 +17,11 @@ class PyGameComposer(IViewComposer):
         # procedura da chiamare per notificare un evento
         self._observercallback: Callable[[object, GameMessages], None] = None
 
-
         # inizializzazione di pygame e dello schermo
         pygame.init()
-        self._screen = pygame.display.set_mode((500, 500))  # TODO prendere dipensioni da file di configurazione
+        self._screen = pygame.display.set_mode((1280, 720))  # TODO prendere dipensioni da file di configurazione
         self._frameratemanager: Clock = pygame.time.Clock()
+        self._framerate: int = 60
 
         # semaforo di mutua esclusione
         self._semaphore: Lock = Lock()
@@ -29,24 +30,24 @@ class PyGameComposer(IViewComposer):
         self._currenttemplate: ITemplate = None
 
         self._templates: Dict[Templates, ITemplate] = {
-            Templates.MAINMENU: PyGameMainMenuTemplate()
+            Templates.MAINMENU: PyGameMainMenuTemplate(),
+            Templates.GAMESELECTION: PyGameGameSelectionTemplate()
+
         }
 
     def init(self, eventhandlercallback: Callable[[object, GameMessages], None]):
         self._observercallback = eventhandlercallback
 
-        self.show(Templates.MAINMENU)
-
-        # Thread(target=self._startloop, args=()).start() # TODO questo fa partire il loop
-
     def show(self, chosenview: Templates):
         # retrieve e inizializzazione del template richiesto
         requestedtemplate: ITemplate = self._templates.get(chosenview)
         requestedtemplate.initialize(self._screen, self._observercallback)
+        print("sto cambiando")
 
         # swap del template mostrato a video
-        self._semaphore.acquire()
+        self._semaphore.acquire()  # TODO vedere come non fare un macello con i deadlock
         self._currenttemplate = requestedtemplate
+        print("ho cambiato")
         self._semaphore.release()
 
     def setAssets(self, **kwargs):
@@ -54,14 +55,12 @@ class PyGameComposer(IViewComposer):
 
     def startWorking(self):
         while True:
-            self._semaphore.acquire()
-
             self._screen.fill((0, 0, 0))  # TODO riempi di nero lo schermo
 
+            self._semaphore.acquire()
             self._currenttemplate.print()
+            self._semaphore.release()
             self._currenttemplate.getInputs()
 
             pygame.display.flip()
-            self._frameratemanager.tick(30)
-
-            self._semaphore.release()
+            self._frameratemanager.tick(self._framerate)

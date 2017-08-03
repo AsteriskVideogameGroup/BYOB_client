@@ -11,3 +11,5 @@ class GameMessages(Enum):
     EXITPROGRAM: int = 4  # esci da tutto il programma
     NEXT: int = 5
     PREVIOUS: int = 6
+    ACCEPT: int = 7
+

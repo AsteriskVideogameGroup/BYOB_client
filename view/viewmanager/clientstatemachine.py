@@ -51,6 +51,8 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
     def input(self, message: GameMessages):
         newstate: IClientState = self.currentstate.input(message)
 
+        print(newstate)
+
         # lo stato potrebbe essere cambiato
         if newstate is not None:
             self.currentstate = newstate
