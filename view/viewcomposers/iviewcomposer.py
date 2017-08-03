@@ -8,7 +8,7 @@ from view.viewcomposers.templates import Templates
 class IViewComposer(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
-    def init(self, eventlistener: Callable[[object, GameMessages, Dict[str, any]], None]):
+    def init(self, eventlistener: Callable[[object, GameMessages], None]):
         pass
 
     @abc.abstractmethod
@@ -18,4 +18,5 @@ class IViewComposer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def setAssets(self, **kwargs):
         pass
+
 

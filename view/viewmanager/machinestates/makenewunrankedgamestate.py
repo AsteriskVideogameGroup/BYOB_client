@@ -21,7 +21,7 @@ class MakeNewUnrankedGameState(IClientState):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
-    def update(self, messageinput: GameMessages, infos: Dict[str, any] = None) -> IClientState:
+    def input(self, messageinput: GameMessages) -> IClientState:
         newstate: IClientState = None
 
         # TODO gestione stati successivi

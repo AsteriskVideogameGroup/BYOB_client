@@ -1,14 +1,13 @@
 import abc
-from typing import Callable, Dict
+from typing import Callable
 
-import pygame
-
+from foundations.oophelpers.observersubject import Subject
 from foundations.sysmessages.gamemessages import GameMessages
 
 
-class ITemplate(metaclass=abc.ABCMeta):
+class ITemplate(Subject):
     @abc.abstractmethod
-    def initialize(self, screen: object, observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
+    def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]) -> 'ITemplate':
         pass
 
     @abc.abstractmethod

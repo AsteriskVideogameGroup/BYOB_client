@@ -19,7 +19,7 @@ class ExampleClientState(IClientState):
         self._viewcomposer = viewcomposer
         self._server = gameserver
 
-    def update(self, messageinput: GameMessages) -> IClientState:
+    def input(self, messageinput: GameMessages) -> IClientState:
         print("updetato")
 
         self._viewcomposer.show(Templates.PROVA)  # TODO togliere
