@@ -13,3 +13,4 @@ class GameMessages(Enum):
     PREVIOUS: int = 6
     ACCEPT: int = 7
 
+
