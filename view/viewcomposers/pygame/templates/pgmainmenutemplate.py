@@ -178,7 +178,6 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
 
                     if event.axis == JoypadControl.AXIS0:
 
-                        print(value)
                         if value > 0:
                             self._select(1)
                         else:
