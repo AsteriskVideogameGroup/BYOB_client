@@ -1,9 +1,9 @@
+import os
 from inspect import getfile
 from typing import Callable, Dict
 
 import pygame
 import sys
-
 
 from foundations.sysmessages.gamemessages import GameMessages
 from foundations.joypadsupport.joypadcontrol import JoypadControl
@@ -20,16 +20,32 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
     _TITLESIZE = (1000, 100)
     _EXITARROWSIZE = (50, 50)
 
-    _PATH: str = str(getfile(self.__class__)) + "/../../../foundations/media/mainmenu/"
+    _PATH: str = "foundations/media/mainmenu/"
 
     def __init__(self):
-        self._menuelement = []
+        self._menuelement = list()
         self._eventlistnercallback = None
         self._screen = None
 
-    def initialize(self, screen: object, observercallback : Callable[[object, GameMessages], None]):
+        #dir = os.path.dirname(__file__)
+        #self._assetspath: str = os.path.join(dir, '../../../foundations/media/mainmenu/')
+
+        #print(self._assetspath)
+
+
+        self._background = None
+        self._exit = None
+        self._character = None
+        self._title = None
+        self._genericelement = None
+        self._elemarrow = None
+        self._rotatedarrow = None
+        self._selected = None
+
+    def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]):
 
         self._screen = screen
+        self.registerEventListener(observercallback)
 
         self._background = pygame.image.load(PyGameMainMenuTemplate._PATH + 'background.png')
         self._background = pygame.transform.scale(self._background, PyGameMainMenuTemplate._SCREENSIZE)
@@ -98,7 +114,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
                 self._eventlistnercallback(GameMessages.EXITPROGRAM)
 
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a or event.key:
+                if event.key == pygame.K_a:
                     self._select(-1)
                 elif event.key == pygame.K_d:
                     self._select(1)
@@ -114,7 +130,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
                         self._select(-1)
 
             elif event.type == pygame.JOYBUTTONDOWN:
-                if event.button == JoypadControl.BUTTON0: #BOTTONE A DI UN JOYPAD XBOX360
+                if event.button == JoypadControl.BUTTON0:  # BOTTONE A DI UN JOYPAD XBOX360
                     self._enter()
 
             elif event.type == pygame.JOYHATMOTION:
@@ -127,11 +143,14 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
         elif self._selected == 0:
             self._eventlistnercallback(GameMessages.INITUNRANKEDGAME)
 
-    def _select(self, direction : int):
+    def _select(self, direction: int):
         self._selected = (self._selected + direction) % 4
-
-
 
     def setAssets(self, **kwargs: dict):
         pass
 
+    def detachEventListerners(self, callback: Callable[[object, GameMessages], None]):
+        pass
+
+    def registerEventListener(self, callback: Callable[[object, GameMessages], None]):
+        self._eventlistnercallback = callback

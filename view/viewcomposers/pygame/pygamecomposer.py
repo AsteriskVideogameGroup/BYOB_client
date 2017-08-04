@@ -23,6 +23,9 @@ class PyGameComposer(IViewComposer):
         self._frameratemanager: Clock = pygame.time.Clock()
         self._framerate: int = 60
 
+        # inizializzazione joypad
+        self._initJoyPad()
+
         # semaforo di mutua esclusione
         self._semaphore: Lock = Lock()
 
@@ -32,7 +35,6 @@ class PyGameComposer(IViewComposer):
         self._templates: Dict[Templates, ITemplate] = {
             Templates.MAINMENU: PyGameMainMenuTemplate(),
             Templates.GAMESELECTION: PyGameGameSelectionTemplate()
-
         }
 
     def init(self, eventhandlercallback: Callable[[object, GameMessages], None]):
@@ -64,3 +66,9 @@ class PyGameComposer(IViewComposer):
 
             pygame.display.flip()
             self._frameratemanager.tick(self._framerate)
+
+    def _initJoyPad(self):
+        pygame.joystick.init()
+        joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+        if joysticks:
+            joysticks[0].init()

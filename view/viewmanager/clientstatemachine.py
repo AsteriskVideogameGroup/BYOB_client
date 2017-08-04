@@ -1,4 +1,7 @@
+import os
 from typing import Dict
+
+import sys
 
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.singleton import SingletonMetaclass
@@ -49,6 +52,11 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         self._viewcomposer.startWorking()
 
     def input(self, message: GameMessages):
+
+        # controllo di uscita dal programma
+        if message == GameMessages.EXITPROGRAM:
+            os._exit(1)
+
         newstate: IClientState = self.currentstate.input(message)
 
         print(newstate)
