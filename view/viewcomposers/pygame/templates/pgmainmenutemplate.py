@@ -12,6 +12,8 @@ from view.viewcomposers.itemplate import ITemplate
 
 class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal template
 
+    # Template menu dimensions
+
     _MENUELEMENTSIZE = (220, 300)
     _CHARACTERSIZE = (600, 600)
     _EXITSIZE = (100, 100)
@@ -19,6 +21,11 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
     _SCREENSIZE = (1280, 720)  # TODO METTERE IN FILE DI CONFIGURAZIONE
     _TITLESIZE = (1000, 100)
     _EXITARROWSIZE = (50, 50)
+
+    # Number of selectable elements
+
+    _SELECTABLEELEMENTS = 4
+
 
     _PATH: str = "foundations/media/mainmenu/"
 
@@ -40,52 +47,72 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
         self._genericelement = None
         self._elemarrow = None
         self._rotatedarrow = None
-        self._selected = None
+        self._selected = 0
 
     def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]):
 
         self._screen = screen
         self.registerEventListener(observercallback)
 
+        # Background loading and resizing
+
         self._background = pygame.image.load(PyGameMainMenuTemplate._PATH + 'background.png')
         self._background = pygame.transform.scale(self._background, PyGameMainMenuTemplate._SCREENSIZE)
+
+        # Exit icon loading and resizing
 
         self._exit = pygame.image.load(PyGameMainMenuTemplate._PATH + 'exit.png')
         self._exit = pygame.transform.scale(self._exit, PyGameMainMenuTemplate._EXITSIZE)
 
+        # Menu character image loading and resizing
+
         self._character = pygame.image.load(PyGameMainMenuTemplate._PATH + 'character.png')
         self._character = pygame.transform.scale(self._character, PyGameMainMenuTemplate._CHARACTERSIZE)
+
+        # Title icon loading and resizing
 
         self._title = pygame.image.load(PyGameMainMenuTemplate._PATH + 'title.png')
         self._title = pygame.transform.scale(self._title, PyGameMainMenuTemplate._TITLESIZE)
 
+        # Generic menu element skeleton loading and resizing
+
         self._genericelement = pygame.image.load(PyGameMainMenuTemplate._PATH + 'menuelement.png')
         self._genericelement = pygame.transform.scale(self._genericelement, PyGameMainMenuTemplate._MENUELEMENTSIZE)
+
+        # Specific menu element loading and resizing
 
         elem1 = pygame.image.load(PyGameMainMenuTemplate._PATH + 'quickmatch.png')
         elem2 = pygame.image.load(PyGameMainMenuTemplate._PATH + 'rankedmatch.png')
         elem3 = pygame.image.load(PyGameMainMenuTemplate._PATH + 'comingsoon.png')
-
         self._menuelement.append(pygame.transform.scale(elem1, PyGameMainMenuTemplate._MENUELEMENTSIZE))
         self._menuelement.append(pygame.transform.scale(elem2, PyGameMainMenuTemplate._MENUELEMENTSIZE))
         self._menuelement.append(pygame.transform.scale(elem3, PyGameMainMenuTemplate._MENUELEMENTSIZE))
 
+        # Menu cursor icon loading and resizing
+
         self._elemarrow = pygame.image.load(PyGameMainMenuTemplate._PATH + 'arrow.png')
         self._elemarrow = pygame.transform.scale(self._elemarrow, PyGameMainMenuTemplate._ARROWSIZE)
+
+        # Definition of the exit arrow (rotation of the cursor and resizing)
 
         self._rotatedarrow = pygame.transform.rotate(self._elemarrow, 270)
         self._rotatedarrow = pygame.transform.scale(self._rotatedarrow, PyGameMainMenuTemplate._EXITARROWSIZE)
 
-        self._selected = 0
 
     def print(self):
+
+        # Background and title positioning and print
 
         zeropos = (0, 0)
         self._screen.blit(self._background, zeropos)
         self._screen.blit(self._title, zeropos)
 
+        # Character positioning and print
+
         characterposition = (900, 130)
         self._screen.blit(self._character, characterposition)
+
+        # Menu elements positioning and print
 
         i = 0
         step = 50
@@ -98,39 +125,67 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
                 elementstartingposition[0] + i * (self._MENUELEMENTSIZE[0] + step), elementstartingposition[1]))
             i = i + 1
 
+        # Exit positioning and print
+
         exitposition = (1150, 0)
         self._screen.blit(self._exit, exitposition)
 
+        # Cursor positioning and print
+
         arrowstartposition = (130, 560)
         if self._selected < 3:
+            # Cursor on menu elements
             self._screen.blit(self._elemarrow, (
                 arrowstartposition[0] + self._selected * (self._MENUELEMENTSIZE[0] + step), arrowstartposition[1]))
         else:
+            # Cursor on exit icon
             self._screen.blit(self._rotatedarrow, (1110, 30))
 
     def getInputs(self):
+
+        # Threshold for the axis detection
+
+        axisthreshold = 0.99
+
+
         for event in pygame.event.get():
+
+            # System exit
             if event.type == pygame.QUIT:
                 self._eventlistnercallback(GameMessages.EXITPROGRAM)
 
+            # Key commands:
+            # >, D: cursor to right (circularly)
+            # <, A: cursor to left (circularly)
+            # return, barspace: selection
+
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_a:
+                if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     self._select(-1)
-                elif event.key == pygame.K_d:
+                elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                     self._select(1)
-                elif event.key == pygame.K_RETURN:
+                elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
                     self._enter()
 
+            # Joypad commands:
+            # AXIS0 to right, DPAD right: cursor to right (circularly)
+            # AXIS0 to left, DPAD left: cursor to left (circularly)
+            # Button0: selection
+
             elif event.type == pygame.JOYAXISMOTION:
-                threshold = 0.95
-                if event.axis == JoypadControl.AXIS0:  # "AXIS 0" E' L'ANALOGICO IN ALTO A SINISTRA DI UN JOYPAD XBOX360
-                    if event.value > threshold:
-                        self._select(1)
-                    elif event.value < -threshold:
-                        self._select(-1)
+                value = event.value
+                if abs(value) > axisthreshold:
+
+                    if event.axis == JoypadControl.AXIS0:
+
+                        print(value)
+                        if value > 0:
+                            self._select(1)
+                        else:
+                            self._select(-1)
 
             elif event.type == pygame.JOYBUTTONDOWN:
-                if event.button == JoypadControl.BUTTON0:  # BOTTONE A DI UN JOYPAD XBOX360
+                if event.button == JoypadControl.BUTTON0:
                     self._enter()
 
             elif event.type == pygame.JOYHATMOTION:
@@ -138,13 +193,21 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
                     self._select(event.value[0])
 
     def _enter(self):
+        # If is selected the exit icon
+
         if self._selected == 3:
             self._eventlistnercallback(GameMessages.EXITPROGRAM)
+
+        # If is selected the first menu element
+
         elif self._selected == 0:
             self._eventlistnercallback(GameMessages.INITUNRANKEDGAME)
 
     def _select(self, direction: int):
-        self._selected = (self._selected + direction) % 4
+
+        # Move the cursor of 'direction' positions to right (can be negative) circularly
+
+        self._selected = (self._selected + direction) % PyGameMainMenuTemplate._SELECTABLEELEMENTS
 
     def setAssets(self, **kwargs: dict):
         pass

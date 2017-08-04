@@ -1,7 +1,7 @@
-from enum import Enum
+from enum import IntEnum
 
 
-class JoypadControl(Enum):
+class JoypadControl(IntEnum):
 
     """
                                    ____                            ____

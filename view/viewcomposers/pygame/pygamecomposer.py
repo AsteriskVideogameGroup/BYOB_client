@@ -72,3 +72,4 @@ class PyGameComposer(IViewComposer):
         joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
         if joysticks:
             joysticks[0].init()
+
