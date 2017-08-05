@@ -24,7 +24,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
 
     # Number of selectable elements
 
-    _SELECTABLEELEMENTS = 4
+    _SELECTABLEITEMS = 4
 
 
     _PATH: str = "foundations/media/mainmenu/"
@@ -206,7 +206,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
 
         # Move the cursor of 'direction' positions to right (can be negative) circularly
 
-        self._selected = (self._selected + direction) % PyGameMainMenuTemplate._SELECTABLEELEMENTS
+        self._selected = (self._selected + direction) % PyGameMainMenuTemplate._SELECTABLEITEMS
 
     def setAssets(self, **kwargs: dict):
         pass
