@@ -44,7 +44,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
 
     def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]):
 
-        self._screen = screen.screen
+        self._screen: pygame.Surface = screen.screen
         self.registerEventListener(observercallback)
         self._mediapath = mediapath + PyGameMainMenuTemplate._MEDIAFOLDER
 

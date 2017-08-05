@@ -1,4 +1,4 @@
-from threading import Thread, Lock
+from threading import Lock
 from typing import Callable, Dict
 
 import pygame
@@ -33,7 +33,7 @@ class PyGameComposer(IViewComposer):
         self._framerate: int = 60  # TODO prendere framerate da file di configurazione
 
         # path base per i media
-        self._basemediapath: str = "foundations/media/" # TODO prendere da file di configurazione
+        self._basemediapath: str = "foundations/media/"  # TODO prendere da file di configurazione
 
         # inizializzazione joypad
         self._initJoyPad()
@@ -74,7 +74,8 @@ class PyGameComposer(IViewComposer):
 
     def startWorking(self):
         while True:
-            self._screen.screen.fill((0, 0, 0))  # TODO riempi di nero lo schermo
+            screen: pygame.Surface = self._screen.screen
+            screen.fill((0, 0, 0))  # TODO riempi di nero lo schermo
 
             self._semaphore.acquire()
             self._currenttemplate.print()
