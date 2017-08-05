@@ -23,6 +23,8 @@ class Client(Subject):
 
         self._eventlisteners: List[Callable[[object, GameMessages, Dict[str, any]], None]] = list()
 
+        self._userid = "User1"
+
     @property
     def clientid(self) -> str:
         return self._clientid
@@ -31,13 +33,13 @@ class Client(Subject):
     def clientid(self, value: str):
         self._clientid = value
 
-    '''@property
+    @property
     def playerid(self) -> str:
         return self._userid
 
     @playerid.setter
     def playerid(self, value: str):
-        self._userid = value'''
+        self._userid = value
 
     @property
     def gamehandler(self) -> str:

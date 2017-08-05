@@ -32,4 +32,5 @@ class ServerWrapper(metaclass=SingletonMetaclass):
             self._client.registerEventListener(callback)
 
     def makeNewGame(self, modeid: str, isranked: bool):
+        print(self._client.clientid)
         self._matchmakinghandler.makeNewGame(self._client.clientid, modeid, isranked)

@@ -31,6 +31,12 @@ class GameCreationWaitState(IClientState):
         # visualizzazione template
         self._viewcomposer.show(Templates.GAMEWAIT)
 
+        selectedmode: str = self._data.get("mode")
+        isranked: bool = self._data.get("isranked")
+
+        print(selectedmode)
+        print(isranked)
+
         # invio messaggio di make new game al server
         # TODO effettuare il make new game
-        #self._server.makeNewGame(self._data.get("mode"))
+        self._server.makeNewGame(selectedmode, isranked)
