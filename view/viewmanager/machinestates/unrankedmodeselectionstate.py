@@ -7,7 +7,7 @@ from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState
 
 
-class GameSelectionState(IClientState):
+class UnrankedModeSelectionState(IClientState):
     def __init__(self):
         self._viewcomposer: IViewComposer = None
         self._server: ServerWrapper = None

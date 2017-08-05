@@ -6,7 +6,7 @@ from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState
-from view.viewmanager.machinestates.gameselectionstate import GameSelectionState
+from view.viewmanager.machinestates.unrankedmodeselectionstate import UnrankedModeSelectionState
 
 
 class MainMenuState(IClientState):
@@ -16,13 +16,6 @@ class MainMenuState(IClientState):
 
         self._currentselection: int = 0  # indice di selezione del giocatore
 
-        # stati successivi in base alla selezione
-        self._nextstates: Dict[int, IClientState] = {
-
-            0: GameSelectionState()
-
-        }
-
     def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, **data: dict):
         self._viewcomposer = viewmanager
         self._server = gameserver
@@ -31,7 +24,7 @@ class MainMenuState(IClientState):
 
         newstate: IClientState = None
 
-        if messageinput == GameMessages.NEXT:
+        '''if messageinput == GameMessages.NEXT:
             self._currentselection = (self._currentselection + 1) % len(self._nextstates)
             print("Selezione: {0}".format(self._currentselection))
 
@@ -44,7 +37,10 @@ class MainMenuState(IClientState):
 
         elif messageinput == GameMessages.EXITPROGRAM:
             print("sto uscendo")
-            os._exit(1)  # TODO può essere migliorato, questo uccide tutti thread
+            os._exit(1)  # TODO può essere migliorato, questo uccide tutti thread'''
+
+        if messageinput == GameMessages.INITUNRANKEDGAME:
+            newstate = UnrankedModeSelectionState()  # nuovo stato di selezione della modalità
         else:
             print("messaggio {0} sconosciujto".format(messageinput))
 

@@ -2,12 +2,13 @@ import abc
 from typing import Callable
 
 from foundations.oophelpers.observersubject import Subject
+from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 
 
 class ITemplate(Subject):
     @abc.abstractmethod
-    def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]) -> 'ITemplate':
+    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]) -> 'ITemplate':
         pass
 
     @abc.abstractmethod

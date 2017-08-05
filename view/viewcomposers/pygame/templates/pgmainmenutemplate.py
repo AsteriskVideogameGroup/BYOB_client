@@ -5,6 +5,7 @@ from typing import Callable, Dict
 import pygame
 import sys
 
+from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from foundations.joypadsupport.joypadcontrol import JoypadControl
 from view.viewcomposers.itemplate import ITemplate
@@ -13,32 +14,24 @@ from view.viewcomposers.itemplate import ITemplate
 class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal template
 
     # Template menu dimensions
-
     _MENUELEMENTSIZE = (220, 300)
     _CHARACTERSIZE = (600, 600)
     _EXITSIZE = (100, 100)
     _ARROWSIZE = (100, 100)
-    _SCREENSIZE = (1280, 720)  # TODO METTERE IN FILE DI CONFIGURAZIONE
     _TITLESIZE = (1000, 100)
     _EXITARROWSIZE = (50, 50)
 
     # Number of selectable elements
-
     _SELECTABLEITEMS = 4
 
-
-    _PATH: str = "foundations/media/mainmenu/"
+    # nome della cartella dei media
+    _MEDIAFOLDER: str = "mainmenu/"
 
     def __init__(self):
         self._menuelement = list()
         self._eventlistnercallback = None
         self._screen = None
-
-        #dir = os.path.dirname(__file__)
-        #self._assetspath: str = os.path.join(dir, '../../../foundations/media/mainmenu/')
-
-        #print(self._assetspath)
-
+        self._mediapath: str = None
 
         self._background = None
         self._exit = None
@@ -49,55 +42,55 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
         self._rotatedarrow = None
         self._selected = 0
 
-    def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]):
+    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]):
 
-        self._screen = screen
+        self._screen = screen.screen
         self.registerEventListener(observercallback)
+        self._mediapath = mediapath + PyGameMainMenuTemplate._MEDIAFOLDER
 
         # Background loading and resizing
 
-        self._background = pygame.image.load(PyGameMainMenuTemplate._PATH + 'background.png')
-        self._background = pygame.transform.scale(self._background, PyGameMainMenuTemplate._SCREENSIZE)
+        self._background = pygame.image.load(self._mediapath + 'background.png')
+        self._background = pygame.transform.scale(self._background, screen.dimensions)
 
         # Exit icon loading and resizing
 
-        self._exit = pygame.image.load(PyGameMainMenuTemplate._PATH + 'exit.png')
+        self._exit = pygame.image.load(self._mediapath + 'exit.png')
         self._exit = pygame.transform.scale(self._exit, PyGameMainMenuTemplate._EXITSIZE)
 
         # Menu character image loading and resizing
 
-        self._character = pygame.image.load(PyGameMainMenuTemplate._PATH + 'character.png')
+        self._character = pygame.image.load(self._mediapath + 'character.png')
         self._character = pygame.transform.scale(self._character, PyGameMainMenuTemplate._CHARACTERSIZE)
 
         # Title icon loading and resizing
 
-        self._title = pygame.image.load(PyGameMainMenuTemplate._PATH + 'title.png')
+        self._title = pygame.image.load(self._mediapath + 'title.png')
         self._title = pygame.transform.scale(self._title, PyGameMainMenuTemplate._TITLESIZE)
 
         # Generic menu element skeleton loading and resizing
 
-        self._genericelement = pygame.image.load(PyGameMainMenuTemplate._PATH + 'menuelement.png')
+        self._genericelement = pygame.image.load(self._mediapath + 'menuelement.png')
         self._genericelement = pygame.transform.scale(self._genericelement, PyGameMainMenuTemplate._MENUELEMENTSIZE)
 
         # Specific menu element loading and resizing
 
-        elem1 = pygame.image.load(PyGameMainMenuTemplate._PATH + 'quickmatch.png')
-        elem2 = pygame.image.load(PyGameMainMenuTemplate._PATH + 'rankedmatch.png')
-        elem3 = pygame.image.load(PyGameMainMenuTemplate._PATH + 'comingsoon.png')
+        elem1 = pygame.image.load(self._mediapath + 'quickmatch.png')
+        elem2 = pygame.image.load(self._mediapath + 'rankedmatch.png')
+        elem3 = pygame.image.load(self._mediapath + 'comingsoon.png')
         self._menuelement.append(pygame.transform.scale(elem1, PyGameMainMenuTemplate._MENUELEMENTSIZE))
         self._menuelement.append(pygame.transform.scale(elem2, PyGameMainMenuTemplate._MENUELEMENTSIZE))
         self._menuelement.append(pygame.transform.scale(elem3, PyGameMainMenuTemplate._MENUELEMENTSIZE))
 
         # Menu cursor icon loading and resizing
 
-        self._elemarrow = pygame.image.load(PyGameMainMenuTemplate._PATH + 'arrow.png')
+        self._elemarrow = pygame.image.load(self._mediapath + 'arrow.png')
         self._elemarrow = pygame.transform.scale(self._elemarrow, PyGameMainMenuTemplate._ARROWSIZE)
 
         # Definition of the exit arrow (rotation of the cursor and resizing)
 
         self._rotatedarrow = pygame.transform.rotate(self._elemarrow, 270)
         self._rotatedarrow = pygame.transform.scale(self._rotatedarrow, PyGameMainMenuTemplate._EXITARROWSIZE)
-
 
     def print(self):
 
@@ -146,7 +139,6 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
         # Threshold for the axis detection
 
         axisthreshold = 0.99
-
 
         for event in pygame.event.get():
 

@@ -2,6 +2,7 @@ from typing import Callable
 
 import pygame
 
+from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
 
@@ -38,8 +39,8 @@ class PyGameGameSelectionTemplate(ITemplate):
                 print('Selected')
                 self._eventlistnercallback(GameMessages.ACCEPT)
 
-    def initialize(self, screen: object, observercallback: Callable[[object, GameMessages], None]) -> ITemplate:
-        self._screen = screen
+    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]) -> ITemplate:
+        self._screen = screen.screen
         self.registerEventListener(observercallback)
 
         return self
