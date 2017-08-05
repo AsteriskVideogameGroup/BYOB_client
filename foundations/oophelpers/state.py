@@ -10,5 +10,5 @@ class State(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def input(self, messageinput: GameMessages, args: Dict[str, any] = None) -> 'State':
+    def input(self, messageinput: GameMessages) -> 'State':
         pass

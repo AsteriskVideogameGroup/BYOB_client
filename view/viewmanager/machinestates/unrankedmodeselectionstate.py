@@ -15,17 +15,19 @@ class UnrankedModeSelectionState(IClientState):
 
         self._currentselection: int = 0
 
-    def input(self, messageinput: GameMessages, args: Dict[str, any] = None) -> IClientState:
+        self._previousstate: IClientState = None
 
+    def input(self, messageinput: GameMessages) -> IClientState:
         newstate: IClientState = None
 
-        print("Ricevuto: {0}".format(args.get("mode")))
-
-        newstate = GameCreationWaitState()
+        if messageinput == GameMessages.MODESELECTED:
+            newstate = GameCreationWaitState()
+        elif messageinput == GameMessages.PREVIOUS:
+            newstate = self._previousstate
 
         return newstate
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, data: Dict[str, any] = None):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
@@ -35,5 +37,8 @@ class UnrankedModeSelectionState(IClientState):
         self._viewcomposer.show(Templates.GAMESELECTION)
         print("Stai ancora scegliendo una modalità")
 
+    def setPreviousState(self, state: IClientState):
+        self._previousstate = state
 
-
+    def giveData(self, data: Dict[str, any]):
+        pass

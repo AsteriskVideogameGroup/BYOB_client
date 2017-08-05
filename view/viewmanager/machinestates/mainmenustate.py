@@ -17,11 +17,12 @@ class MainMenuState(IClientState):
 
         self._currentselection: int = 0  # indice di selezione del giocatore
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, data: Dict[str, any] = None):
+
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
-    def input(self, messageinput: GameMessages, args: Dict[str, any] = None) -> IClientState:
+    def input(self, messageinput: GameMessages) -> IClientState:
 
         newstate: IClientState = None
 
@@ -36,3 +37,10 @@ class MainMenuState(IClientState):
 
         # visualizza il main menu
         self._viewcomposer.show(Templates.MAINMENU)
+
+    def setPreviousState(self, state: IClientState):
+        pass
+
+    def giveData(self, data: Dict[str, any]):
+        pass
+

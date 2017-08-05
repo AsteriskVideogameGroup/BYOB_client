@@ -51,20 +51,23 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         # avvio del viewcomposer
         self._viewcomposer.startWorking()
 
-    def input(self, message: GameMessages, args: Dict[str, any] = None):
+    def input(self, message: GameMessages, data: Dict[str, any] = None):
 
         # controllo di uscita dal programma
         if message == GameMessages.EXITPROGRAM:
             os._exit(1)
 
-        newstate: IClientState = self.currentstate.input(message, args)
+        newstate: IClientState = self.currentstate.input(message)
 
         print(newstate)
 
         # lo stato potrebbe essere cambiato
         if newstate is not None:
+            newstate.setPreviousState(self.currentstate)
             self.currentstate = newstate
-            self.currentstate.initialize(self._server, self._viewcomposer, args)
+            self.currentstate.initialize(self._server, self._viewcomposer)
+            if data is not None:
+                self.currentstate.giveData(data)
             self.currentstate.run()  # esecuzione del nuovo stato
         else:
             print("Nessun cambiamento di stato")

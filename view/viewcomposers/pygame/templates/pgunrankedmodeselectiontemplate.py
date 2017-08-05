@@ -44,7 +44,12 @@ class PyGameUnrankedModeSelectionTemplate(ITemplate):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
                     # TODO modificare
-                    self._eventlistnercallback(GameMessages.MODESELECTED, {"mode": self._modeselected, "isranked": False})
+                    self._eventlistnercallback(GameMessages.MODESELECTED,
+                                               {"mode": self._modeselected, "isranked": False})
+                elif event.key == pygame.K_ESCAPE:
+                    self._eventlistnercallback(GameMessages.PREVIOUS)
+                else:
+                    print("non so che fare")
 
     def initialize(self, screen: Screen, mediapath: str,
                    observercallback: Callable[[object, GameMessages, Dict[str, any]], None]) -> ITemplate:

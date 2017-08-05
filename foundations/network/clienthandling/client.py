@@ -1,3 +1,4 @@
+import uuid
 from threading import Thread
 from typing import List, Callable, Dict
 
@@ -19,11 +20,10 @@ class Client(Subject):
 
         self._gamehandlerid: str = None
 
-        # self._eventlisteners: dict = dict()
-
         self._eventlisteners: List[Callable[[object, GameMessages, Dict[str, any]], None]] = list()
 
-        self._userid = "User1"
+        # TODO user id deve essere impostato mediante login
+        self._userid = str(uuid.uuid4())
 
     @property
     def clientid(self) -> str:

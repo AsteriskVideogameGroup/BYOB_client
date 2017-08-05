@@ -42,55 +42,61 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
         self._rotatedarrow = None
         self._selected = 0
 
+        self._isalreadyinitialized: bool = False  # true se è già stato inizializzato
+
     def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
 
-        self._screen: pygame.Surface = screen.screen
-        self.registerEventListener(observercallback)
-        self._mediapath = mediapath + PyGameMainMenuTemplate._MEDIAFOLDER
+        if self._isalreadyinitialized is False:
+            self._screen: pygame.Surface = screen.screen
+            self.registerEventListener(observercallback)
+            self._mediapath = mediapath + PyGameMainMenuTemplate._MEDIAFOLDER
 
-        # Background loading and resizing
+            # Background loading and resizing
 
-        self._background = pygame.image.load(self._mediapath + 'background.png')
-        self._background = pygame.transform.scale(self._background, screen.dimensions)
+            self._background = pygame.image.load(self._mediapath + 'background.png')
+            self._background = pygame.transform.scale(self._background, screen.dimensions)
 
-        # Exit icon loading and resizing
+            # Exit icon loading and resizing
 
-        self._exit = pygame.image.load(self._mediapath + 'exit.png')
-        self._exit = pygame.transform.scale(self._exit, PyGameMainMenuTemplate._EXITSIZE)
+            self._exit = pygame.image.load(self._mediapath + 'exit.png')
+            self._exit = pygame.transform.scale(self._exit, PyGameMainMenuTemplate._EXITSIZE)
 
-        # Menu character image loading and resizing
+            # Menu character image loading and resizing
 
-        self._character = pygame.image.load(self._mediapath + 'character.png')
-        self._character = pygame.transform.scale(self._character, PyGameMainMenuTemplate._CHARACTERSIZE)
+            self._character = pygame.image.load(self._mediapath + 'character.png')
+            self._character = pygame.transform.scale(self._character, PyGameMainMenuTemplate._CHARACTERSIZE)
 
-        # Title icon loading and resizing
+            # Title icon loading and resizing
 
-        self._title = pygame.image.load(self._mediapath + 'title.png')
-        self._title = pygame.transform.scale(self._title, PyGameMainMenuTemplate._TITLESIZE)
+            self._title = pygame.image.load(self._mediapath + 'title.png')
+            self._title = pygame.transform.scale(self._title, PyGameMainMenuTemplate._TITLESIZE)
 
-        # Generic menu element skeleton loading and resizing
+            # Generic menu element skeleton loading and resizing
 
-        self._genericelement = pygame.image.load(self._mediapath + 'menuelement.png')
-        self._genericelement = pygame.transform.scale(self._genericelement, PyGameMainMenuTemplate._MENUELEMENTSIZE)
+            self._genericelement = pygame.image.load(self._mediapath + 'menuelement.png')
+            self._genericelement = pygame.transform.scale(self._genericelement, PyGameMainMenuTemplate._MENUELEMENTSIZE)
 
-        # Specific menu element loading and resizing
+            # Specific menu element loading and resizing
 
-        elem1 = pygame.image.load(self._mediapath + 'quickmatch.png')
-        elem2 = pygame.image.load(self._mediapath + 'rankedmatch.png')
-        elem3 = pygame.image.load(self._mediapath + 'comingsoon.png')
-        self._menuelement.append(pygame.transform.scale(elem1, PyGameMainMenuTemplate._MENUELEMENTSIZE))
-        self._menuelement.append(pygame.transform.scale(elem2, PyGameMainMenuTemplate._MENUELEMENTSIZE))
-        self._menuelement.append(pygame.transform.scale(elem3, PyGameMainMenuTemplate._MENUELEMENTSIZE))
+            elem1 = pygame.image.load(self._mediapath + 'quickmatch.png')
+            elem2 = pygame.image.load(self._mediapath + 'rankedmatch.png')
+            elem3 = pygame.image.load(self._mediapath + 'comingsoon.png')
+            self._menuelement.append(pygame.transform.scale(elem1, PyGameMainMenuTemplate._MENUELEMENTSIZE))
+            self._menuelement.append(pygame.transform.scale(elem2, PyGameMainMenuTemplate._MENUELEMENTSIZE))
+            self._menuelement.append(pygame.transform.scale(elem3, PyGameMainMenuTemplate._MENUELEMENTSIZE))
 
-        # Menu cursor icon loading and resizing
+            # Menu cursor icon loading and resizing
 
-        self._elemarrow = pygame.image.load(self._mediapath + 'arrow.png')
-        self._elemarrow = pygame.transform.scale(self._elemarrow, PyGameMainMenuTemplate._ARROWSIZE)
+            self._elemarrow = pygame.image.load(self._mediapath + 'arrow.png')
+            self._elemarrow = pygame.transform.scale(self._elemarrow, PyGameMainMenuTemplate._ARROWSIZE)
 
-        # Definition of the exit arrow (rotation of the cursor and resizing)
+            # Definition of the exit arrow (rotation of the cursor and resizing)
 
-        self._rotatedarrow = pygame.transform.rotate(self._elemarrow, 270)
-        self._rotatedarrow = pygame.transform.scale(self._rotatedarrow, PyGameMainMenuTemplate._EXITARROWSIZE)
+            self._rotatedarrow = pygame.transform.rotate(self._elemarrow, 270)
+            self._rotatedarrow = pygame.transform.scale(self._rotatedarrow, PyGameMainMenuTemplate._EXITARROWSIZE)
+
+            self._isalreadyinitialized = True
+
 
     def print(self):
 
