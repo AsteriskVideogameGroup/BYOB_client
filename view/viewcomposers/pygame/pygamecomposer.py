@@ -7,8 +7,9 @@ from pygame.time import Clock
 from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
+from view.viewcomposers.pygame.templates.pggamecreationwaittemplate import PyGameGameCreationWaitTemplate
 from view.viewcomposers.pygame.templates.pgmainmenutemplate import PyGameMainMenuTemplate
-from view.viewcomposers.pygame.templates.pgmodeselectiontemplate import PyGameUnrankedModeSelectionTemplate
+from view.viewcomposers.pygame.templates.pgunrankedmodeselectiontemplate import PyGameUnrankedModeSelectionTemplate
 from view.viewcomposers.templates import Templates
 from view.viewcomposers.iviewcomposer import IViewComposer
 
@@ -16,7 +17,7 @@ from view.viewcomposers.iviewcomposer import IViewComposer
 class PyGameComposer(IViewComposer):
     def __init__(self):
         # procedura da chiamare per notificare un evento
-        self._observercallback: Callable[[object, GameMessages, any], None] = None
+        self._observercallback: Callable[[object, GameMessages, Dict[str, any]], None] = None
 
         # inizializzazione di pygame e dello schermo
         pygame.init()
@@ -47,10 +48,11 @@ class PyGameComposer(IViewComposer):
         # template disponibili
         self._templates: Dict[Templates, ITemplate] = {
             Templates.MAINMENU: PyGameMainMenuTemplate(),
-            Templates.GAMESELECTION: PyGameUnrankedModeSelectionTemplate()
+            Templates.GAMESELECTION: PyGameUnrankedModeSelectionTemplate(),
+            Templates.GAMEWAIT: PyGameGameCreationWaitTemplate()
         }
 
-    def init(self, eventhandlercallback: Callable[[object, GameMessages, any], None]):
+    def init(self, eventhandlercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
         self._observercallback = eventhandlercallback
 
     def show(self, chosenview: Templates):

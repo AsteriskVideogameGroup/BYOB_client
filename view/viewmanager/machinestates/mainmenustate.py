@@ -10,34 +10,20 @@ from view.viewmanager.machinestates.unrankedmodeselectionstate import UnrankedMo
 
 
 class MainMenuState(IClientState):
+
     def __init__(self):
         self._viewcomposer: IViewComposer = None
         self._server: ServerWrapper = None
 
         self._currentselection: int = 0  # indice di selezione del giocatore
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, **data: dict):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, data: Dict[str, any] = None):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
-    def input(self, messageinput: GameMessages, args: Dict[str, any]) -> IClientState:
+    def input(self, messageinput: GameMessages, args: Dict[str, any] = None) -> IClientState:
 
         newstate: IClientState = None
-
-        '''if messageinput == GameMessages.NEXT:
-            self._currentselection = (self._currentselection + 1) % len(self._nextstates)
-            print("Selezione: {0}".format(self._currentselection))
-
-        elif messageinput == GameMessages.PREVIOUS:
-            self._currentselection = (self._currentselection - 1) % len(self._nextstates)
-            print("Selezione: {0}".format(self._currentselection))
-
-        elif messageinput == GameMessages.ACCEPT:
-            newstate = self._nextstates.get(self._currentselection)
-
-        elif messageinput == GameMessages.EXITPROGRAM:
-            print("sto uscendo")
-            os._exit(1)  # TODO può essere migliorato, questo uccide tutti thread'''
 
         if messageinput == GameMessages.INITUNRANKEDGAME:
             newstate = UnrankedModeSelectionState()  # nuovo stato di selezione della modalità

@@ -64,7 +64,7 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         # lo stato potrebbe essere cambiato
         if newstate is not None:
             self.currentstate = newstate
-            self.currentstate.initialize(self._server, self._viewcomposer)
+            self.currentstate.initialize(self._server, self._viewcomposer, args)
             self.currentstate.run()  # esecuzione del nuovo stato
         else:
             print("Nessun cambiamento di stato")

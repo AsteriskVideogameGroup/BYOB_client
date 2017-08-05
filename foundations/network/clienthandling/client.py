@@ -21,7 +21,7 @@ class Client(Subject):
 
         # self._eventlisteners: dict = dict()
 
-        self._eventlisteners: List[Callable[[object, GameMessages, any], None]] = list()
+        self._eventlisteners: List[Callable[[object, GameMessages, Dict[str, any]], None]] = list()
 
     @property
     def clientid(self) -> str:
@@ -54,10 +54,10 @@ class Client(Subject):
     def notifyMapReady(self):
         self._notify(GameMessages.GAMECREATED)
 
-    def detachEventListerners(self, callback: Callable[[object, GameMessages, any], None]):
+    def detachEventListerners(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
         self._eventlisteners.remove(callback)
 
-    def registerEventListener(self, callback: Callable[[object, GameMessages, any], None]):
+    def registerEventListener(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
         self._eventlisteners.append(callback)
 
     def _notify(self, message: GameMessages):

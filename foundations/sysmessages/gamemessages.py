@@ -12,5 +12,6 @@ class GameMessages(Enum):
     NEXT: int = 5
     PREVIOUS: int = 6
     ACCEPT: int = 7
+    MODESELECTED: int = 8
 
 

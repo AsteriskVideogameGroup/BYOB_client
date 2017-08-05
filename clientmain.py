@@ -32,7 +32,7 @@ machine.initialize(server, viewcomposer, initialstate)
 
 print("pure qui ok")
 
-machine.input(GameMessages.INITUNRANKEDGAME)
+#machine.input(GameMessages.INITUNRANKEDGAME)
 
 print("pure qui ok 2")
 

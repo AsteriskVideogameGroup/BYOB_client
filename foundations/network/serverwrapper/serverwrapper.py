@@ -27,7 +27,7 @@ class ServerWrapper(metaclass=SingletonMetaclass):
         self._client: Client = client
         self._client.clientid = self._corbamanager.remotize(client)
 
-    def addListener(self, callback: Callable[[object, GameMessages, any], None]):
+    def addListener(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
         if self._client is not None:
             self._client.registerEventListener(callback)
 
