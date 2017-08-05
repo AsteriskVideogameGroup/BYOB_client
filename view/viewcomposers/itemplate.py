@@ -8,7 +8,7 @@ from foundations.sysmessages.gamemessages import GameMessages
 
 class ITemplate(Subject):
     @abc.abstractmethod
-    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]) -> 'ITemplate':
+    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages, any], None]) -> 'ITemplate':
         pass
 
     @abc.abstractmethod

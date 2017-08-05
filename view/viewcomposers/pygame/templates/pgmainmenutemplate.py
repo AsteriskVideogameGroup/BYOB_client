@@ -42,7 +42,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
         self._rotatedarrow = None
         self._selected = 0
 
-    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]):
+    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages, any], None]):
 
         self._screen: pygame.Surface = screen.screen
         self.registerEventListener(observercallback)
@@ -203,8 +203,8 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
     def setAssets(self, **kwargs: dict):
         pass
 
-    def detachEventListerners(self, callback: Callable[[object, GameMessages], None]):
+    def detachEventListerners(self, callback: Callable[[object, GameMessages, any], None]):
         pass
 
-    def registerEventListener(self, callback: Callable[[object, GameMessages], None]):
+    def registerEventListener(self, callback: Callable[[object, GameMessages, any], None]):
         self._eventlistnercallback = callback

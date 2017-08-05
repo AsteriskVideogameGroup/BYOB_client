@@ -51,13 +51,13 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         # avvio del viewcomposer
         self._viewcomposer.startWorking()
 
-    def input(self, message: GameMessages):
+    def input(self, message: GameMessages, args: Dict[str, any] = None):
 
         # controllo di uscita dal programma
         if message == GameMessages.EXITPROGRAM:
             os._exit(1)
 
-        newstate: IClientState = self.currentstate.input(message)
+        newstate: IClientState = self.currentstate.input(message, args)
 
         print(newstate)
 

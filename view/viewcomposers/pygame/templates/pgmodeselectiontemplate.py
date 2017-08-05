@@ -7,13 +7,12 @@ from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
 
 
-class PyGameGameSelectionTemplate(ITemplate):
-
+class PyGameUnrankedModeSelectionTemplate(ITemplate):
     def __init__(self):
-        self._eventlistnercallback: Callable[[object, GameMessages], None] = None
+        self._eventlistnercallback: Callable[[object, GameMessages, any], None] = None
         self._screen = None
 
-    def detachEventListerners(self, callback: Callable[[object, GameMessages], None]):
+    def detachEventListerners(self, callback: Callable[[object, GameMessages, any], None]):
         pass
 
     def setAssets(self, **kwargs: dict):
@@ -39,11 +38,12 @@ class PyGameGameSelectionTemplate(ITemplate):
                 print('Selected')
                 self._eventlistnercallback(GameMessages.ACCEPT)
 
-    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages], None]) -> ITemplate:
+    def initialize(self, screen: Screen, mediapath: str,
+                   observercallback: Callable[[object, GameMessages, any], None]) -> ITemplate:
         self._screen = screen.screen
         self.registerEventListener(observercallback)
 
         return self
 
-    def registerEventListener(self, callback: Callable[[object, GameMessages], None]):
+    def registerEventListener(self, callback: Callable[[object, GameMessages, any], None]):
         self._eventlistnercallback = callback

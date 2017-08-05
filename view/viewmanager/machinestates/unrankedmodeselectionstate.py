@@ -23,7 +23,7 @@ class UnrankedModeSelectionState(IClientState):
 
         ]
 
-    def input(self, messageinput: GameMessages) -> IClientState:
+    def input(self, messageinput: GameMessages, args: Dict[str, any]) -> IClientState:
 
         newstate: IClientState = None
 
