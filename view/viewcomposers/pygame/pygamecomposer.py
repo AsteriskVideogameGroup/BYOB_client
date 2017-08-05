@@ -66,6 +66,10 @@ class PyGameComposer(IViewComposer):
         self._semaphore.release()
 
     def setAssets(self, **kwargs):
+        self._semaphore.acquire()
+        self._currenttemplate.setAssets(kwargs)
+        self._semaphore.release()
+
         pass
 
     def startWorking(self):
