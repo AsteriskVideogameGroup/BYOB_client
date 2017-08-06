@@ -3,10 +3,11 @@ from typing import Tuple
 
 class Screen:
 
-    def __init__(self, screenmanager: object, screenwidth: int, sceenheight: int):
+    def __init__(self, screenmanager: object, screenwidth: int, screenheight: int, fps: int):
         self._sceenmanager: object = screenmanager
         self._screenwidth: int = screenwidth
-        self._sceenheight: int = sceenheight
+        self._screenheight: int = screenheight
+        self._fps : int = fps
 
     @property
     def screen(self) -> object:
@@ -18,8 +19,13 @@ class Screen:
 
     @property
     def height(self) -> int:
-        return self._sceenheight
+        return self._screenheight
 
     @property
     def dimensions(self) -> Tuple[int, int]:
         return self.width, self.height
+
+    @property
+    def fps(self) -> int:
+        return self._fps
+

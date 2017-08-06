@@ -7,7 +7,7 @@ from pygame.time import Clock
 from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
-from view.viewcomposers.pygame.templates.pggamecreationwaittemplate import PyGameGameCreationWaitTemplate
+from view.viewcomposers.pygame.templates.pggamewaitingtemplate import PyGameGameWaitingTemplate
 from view.viewcomposers.pygame.templates.pgmainmenutemplate import PyGameMainMenuTemplate
 from view.viewcomposers.pygame.templates.pgmodeselectiontemplate import PyGameModeSelectionTemplate
 from view.viewcomposers.templates import Templates
@@ -27,11 +27,16 @@ class PyGameComposer(IViewComposer):
         width = 1280
         height = 720
         screenobject: object = pygame.display.set_mode((width, height))
-        # TODO prendere dipensioni da file di configurazione
-        self._screen: Screen = Screen(screenobject, width, height)
+        windowname = "BYOB - Bring Your Own Bomb!"
+        pygame.display.set_caption(windowname)
+
 
         self._frameratemanager: Clock = pygame.time.Clock()
         self._framerate: int = 60  # TODO prendere framerate da file di configurazione
+
+        # TODO prendere dipensioni da file di configurazione
+        self._screen: Screen = Screen(screenobject, width, height, self._framerate)
+
 
         # path base per i media
         self._basemediapath: str = "foundations/media/"  # TODO prendere da file di configurazione
@@ -49,7 +54,7 @@ class PyGameComposer(IViewComposer):
         self._templates: Dict[Templates, ITemplate] = {
             Templates.MAINMENU: PyGameMainMenuTemplate(),
             Templates.GAMESELECTION: PyGameModeSelectionTemplate(),
-            Templates.GAMEWAIT: PyGameGameCreationWaitTemplate()
+            Templates.GAMEWAIT: PyGameGameWaitingTemplate()
         }
 
     def init(self, eventhandlercallback: Callable[[object, GameMessages, Dict[str, any]], None]):

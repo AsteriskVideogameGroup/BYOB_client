@@ -32,7 +32,7 @@ class PyGameModeSelectionTemplate(ITemplate):
     _FONTPATH = "font/"
 
     def __init__(self):
-        self._menuelement = []
+
         self._eventlistnercallback = None
         self._screen = None
         self._modes = []
@@ -263,7 +263,7 @@ class PyGameModeSelectionTemplate(ITemplate):
 
     def _enter(self):
         if self._selected == 0:
-            self._selected = 2
+            self._selected = 1
         elif self._selected == 2:
             self._eventlistnercallback(GameMessages.PREVIOUS)
         else:
