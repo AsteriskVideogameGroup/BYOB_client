@@ -67,7 +67,7 @@ class PyGameComposer(IViewComposer):
         print("ho cambiato")
         self._semaphore.release()
 
-    def setAssets(self, **kwargs):
+    def setAssets(self, kwargs: Dict[str, any]):
         self._semaphore.acquire()
         self._currenttemplate.setAssets(kwargs)
         self._semaphore.release()

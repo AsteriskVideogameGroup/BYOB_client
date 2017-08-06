@@ -2,6 +2,7 @@ from typing import Dict, List
 
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
+from model.clientgamemanage.clientmode import ClientMode
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.gamecreationwaitstate import GameCreationWaitState
@@ -35,6 +36,36 @@ class UnrankedModeSelectionState(IClientState):
         print("Devi scegliere una modalità")
 
         self._viewcomposer.show(Templates.GAMESELECTION)
+
+        mod1: ClientMode = ClientMode()
+        mod1.id = "mod1"
+        mod1.name = "modalità1"
+        mod1.dimensions = (5, 7)
+        mod1.duration = 100
+        mod1.numplayers = 6
+
+        mod2: ClientMode = ClientMode()
+        mod2.id = "mod2"
+        mod2.name = "modalità2"
+        mod2.dimensions = (75, 7)
+        mod2.duration = 200
+        mod2.numplayers = 2
+
+        mod3: ClientMode = ClientMode()
+        mod3.id = "mod3"
+        mod3.name = "modalità3"
+        mod3.dimensions = (8, 7)
+        mod3.duration = 700
+        mod3.numplayers = 4
+
+        # TODO prendere da file
+        args: Dict[str, any] = {
+            "ranked": False,
+            "modes": [mod1, mod2, mod3]
+        }
+
+        self._viewcomposer.setAssets(args)
+
         print("Stai ancora scegliendo una modalità")
 
     def setPreviousState(self, state: IClientState):

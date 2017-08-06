@@ -11,7 +11,7 @@ from foundations.joypadsupport.joypadcontrol import JoypadControl
 from view.viewcomposers.itemplate import ITemplate
 
 
-class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal template
+class PyGameMainMenuTemplate(ITemplate):
 
     # Template menu dimensions
     _MENUELEMENTSIZE = (220, 300)
@@ -44,7 +44,8 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
 
         self._isalreadyinitialized: bool = False  # true se è già stato inizializzato
 
-    def initialize(self, screen: Screen, mediapath: str, observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
+    def initialize(self, screen: Screen, mediapath: str,
+                   observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
 
         if self._isalreadyinitialized is False:
             self._screen: pygame.Surface = screen.screen
@@ -96,7 +97,6 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
             self._rotatedarrow = pygame.transform.scale(self._rotatedarrow, PyGameMainMenuTemplate._EXITARROWSIZE)
 
             self._isalreadyinitialized = True
-
 
     def print(self):
 
@@ -206,7 +206,7 @@ class PyGameMainMenuTemplate(ITemplate):  # TODO mettere ereditarietà dal templ
 
         self._selected = (self._selected + direction) % PyGameMainMenuTemplate._SELECTABLEITEMS
 
-    def setAssets(self, **kwargs: dict):
+    def setAssets(self, kwargs: Dict[str, any]):
         pass
 
     def detachEventListerners(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):

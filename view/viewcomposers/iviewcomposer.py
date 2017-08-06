@@ -16,7 +16,7 @@ class IViewComposer(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def setAssets(self, **kwargs):
+    def setAssets(self, kwargs: Dict[str, any]):
         pass
 
     @abc.abstractmethod

@@ -15,7 +15,7 @@ class PyGameGameCreationWaitTemplate(ITemplate):
     def detachEventListerners(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
         pass
 
-    def setAssets(self, **kwargs: dict):
+    def setAssets(self, kwargs: Dict[str, any]):
         pass
 
     def print(self):
