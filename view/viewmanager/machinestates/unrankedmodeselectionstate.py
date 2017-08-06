@@ -21,7 +21,7 @@ class UnrankedModeSelectionState(IClientState):
     def input(self, messageinput: GameMessages) -> IClientState:
         newstate: IClientState = None
 
-        if messageinput == GameMessages.MODESELECTED:
+        if messageinput == GameMessages.UNRANKEDMODESELECTED:
             newstate = GameCreationWaitState()
         elif messageinput == GameMessages.PREVIOUS:
             newstate = self._previousstate

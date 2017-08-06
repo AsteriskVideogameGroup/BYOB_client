@@ -264,13 +264,15 @@ class PyGameModeSelectionTemplate(ITemplate):
     def _enter(self):
         if self._selected == 0:
             self._selected = 2
-        elif self._selected == 1:
+        elif self._selected == 2:
             self._eventlistnercallback(GameMessages.PREVIOUS)
         else:
             if not self._ranked:
-                self._eventlistnercallback(GameMessages.INITUNRANKEDGAME, {})  # TODO passare la modalità
+                message: GameMessages = GameMessages.UNRANKEDMODESELECTED
             else:
-                self._eventlistnercallback(GameMessages.INITRANKEDGAME)
+                message: GameMessages = GameMessages.RANKEDMODESELECTED
+
+            self._eventlistnercallback(message, {"mode": self._modes[self._currentMode].id})  # TODO passare la modalità
 
     def _select(self, direction: int):
 

@@ -9,7 +9,7 @@ from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
 from view.viewcomposers.pygame.templates.pggamecreationwaittemplate import PyGameGameCreationWaitTemplate
 from view.viewcomposers.pygame.templates.pgmainmenutemplate import PyGameMainMenuTemplate
-from view.viewcomposers.pygame.templates.pgmodeselectiontemplate import PyGameUnrankedModeSelectionTemplate
+from view.viewcomposers.pygame.templates.pgmodeselectiontemplate import PyGameModeSelectionTemplate
 from view.viewcomposers.templates import Templates
 from view.viewcomposers.iviewcomposer import IViewComposer
 
@@ -48,7 +48,7 @@ class PyGameComposer(IViewComposer):
         # template disponibili
         self._templates: Dict[Templates, ITemplate] = {
             Templates.MAINMENU: PyGameMainMenuTemplate(),
-            Templates.GAMESELECTION: PyGameUnrankedModeSelectionTemplate(),
+            Templates.GAMESELECTION: PyGameModeSelectionTemplate(),
             Templates.GAMEWAIT: PyGameGameCreationWaitTemplate()
         }
 
