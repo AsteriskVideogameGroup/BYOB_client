@@ -18,11 +18,13 @@ class UnrankedModeSelectionState(IClientState):
 
         self._previousstate: IClientState = None
 
-    def input(self, messageinput: GameMessages) -> IClientState:
+    def input(self, messageinput: GameMessages, data: Dict[str, any] = None) -> IClientState:
         newstate: IClientState = None
 
         if messageinput == GameMessages.UNRANKEDMODESELECTED:
             newstate = GameCreationWaitState()
+            data["isranked"] = False
+            newstate.giveData(data)
         elif messageinput == GameMessages.PREVIOUS:
             newstate = self._previousstate
 
@@ -37,6 +39,7 @@ class UnrankedModeSelectionState(IClientState):
 
         self._viewcomposer.show(Templates.GAMESELECTION)
 
+        # TODO prendere da file!!!
         mod1: ClientMode = ClientMode()
         mod1.id = "mod1"
         mod1.name = "modalità1"

@@ -10,19 +10,17 @@ from view.viewmanager.machinestates.unrankedmodeselectionstate import UnrankedMo
 
 
 class MainMenuState(IClientState):
-
     def __init__(self):
         self._viewcomposer: IViewComposer = None
         self._server: ServerWrapper = None
 
         self._currentselection: int = 0  # indice di selezione del giocatore
 
-
     def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
-    def input(self, messageinput: GameMessages) -> IClientState:
+    def input(self, messageinput: GameMessages, data: Dict[str, any] = None) -> IClientState:
 
         newstate: IClientState = None
 
@@ -43,4 +41,3 @@ class MainMenuState(IClientState):
 
     def giveData(self, data: Dict[str, any]):
         pass
-

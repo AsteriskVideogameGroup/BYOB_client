@@ -57,7 +57,7 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         if message == GameMessages.EXITPROGRAM:
             os._exit(1)
 
-        newstate: IClientState = self.currentstate.input(message)
+        newstate: IClientState = self.currentstate.input(message, data)
 
         print(newstate)
 
@@ -66,8 +66,6 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
             newstate.setPreviousState(self.currentstate)
             self.currentstate = newstate
             self.currentstate.initialize(self._server, self._viewcomposer)
-            if data is not None:
-                self.currentstate.giveData(data)
             self.currentstate.run()  # esecuzione del nuovo stato
         else:
             print("Nessun cambiamento di stato")

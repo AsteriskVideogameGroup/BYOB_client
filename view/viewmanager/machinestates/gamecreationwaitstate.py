@@ -15,7 +15,7 @@ class GameCreationWaitState(IClientState):
         self._server: ServerWrapper = None
         self._data: Dict[str, any] = None
 
-    def input(self, messageinput: GameMessages) -> IClientState:
+    def input(self, messageinput: GameMessages, data: Dict[str, any] = None) -> IClientState:
         newstate: IClientState = None
 
         # print("Ricevuto: {0}".format(args.get("mode")))
@@ -42,7 +42,7 @@ class GameCreationWaitState(IClientState):
 
         # invio messaggio di make new game al server
         # TODO effettuare il make new game
-        self._server.makeNewGame(selectedmode, isranked)
+        #self._server.makeNewGame(selectedmode, isranked)
 
     def setPreviousState(self, state: IClientState):
         pass
