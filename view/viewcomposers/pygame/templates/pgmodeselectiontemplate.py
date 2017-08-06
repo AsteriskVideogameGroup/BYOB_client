@@ -32,7 +32,7 @@ class PyGameModeSelectionTemplate(ITemplate):
     _FONTPATH = "font/"
 
     def __init__(self):
-        self._menuelement = []
+
         self._eventlistnercallback = None
         self._screen = None
         self._modes = []
