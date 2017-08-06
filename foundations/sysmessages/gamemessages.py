@@ -8,10 +8,11 @@ class GameMessages(Enum):
 
     # eventi user input
     INITUNRANKEDGAME: int = 3  # il giocatore vuole iniziare una partita unranked
-    EXITPROGRAM: int = 4  # esci da tutto il programma
-    NEXT: int = 5
-    PREVIOUS: int = 6
-    ACCEPT: int = 7
-    MODESELECTED: int = 8
+    INITRANKEDGAME: int = 4
+    EXITPROGRAM: int = 5  # esci da tutto il programma
+    NEXT: int = 6
+    PREVIOUS: int = 7
+    ACCEPT: int = 8
+    MODESELECTED: int = 9
 
 
