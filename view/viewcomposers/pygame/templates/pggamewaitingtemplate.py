@@ -1,5 +1,6 @@
 import os
 from inspect import getfile
+from time import clock
 from typing import Callable, Dict
 
 import pygame
@@ -27,6 +28,7 @@ class PyGameGameWaitingTemplate(ITemplate):
         self._loopduration = 0
         self._fps = 0
         self._character = []
+        self._delayinterrogativepoints: int = 0
 
     def initialize(self, screen: Screen, mediapath: str,
                    observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
@@ -89,7 +91,7 @@ class PyGameGameWaitingTemplate(ITemplate):
         # Loading string rendering, positioning and print
 
         loadingstring = "Looking for a game" + "." * int(
-            (1 * self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)
+            ( self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)
         loadinglabel = self._font.render(loadingstring, 1, WHITE)
         labeldimensions = (loadinglabel.get_rect().width, loadinglabel.get_rect().height)
 
@@ -116,7 +118,7 @@ class PyGameGameWaitingTemplate(ITemplate):
             (characterposition[0] + PyGameGameWaitingTemplate._CHARACTERSIZE[0],
              characterposition[1] - 2 * questionmarkdimensions[1]),
         ]
-        for i in range(int((1 * self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)):
+        for i in range(int((self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)):
             self._screen.blit(questionmark, questionmarkpositions[i])
 
         # Increasing of number of print() made on this screen
