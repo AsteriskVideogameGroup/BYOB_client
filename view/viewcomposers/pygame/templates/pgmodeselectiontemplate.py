@@ -5,6 +5,7 @@ from typing import Callable, Dict
 import pygame
 import sys
 
+from foundations.math.mathop import percentage
 from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from foundations.joypadsupport.joypadcontrol import JoypadControl
@@ -59,6 +60,9 @@ class PyGameModeSelectionTemplate(ITemplate):
         self._screendims = screen.dimensions
         self.registerEventListener(observercallback)
 
+        # dimension of the icons on the screen
+        self._arrowsize = (int(percentage(self._screendims[0], 175/32)), int(percentage(self._screendims[0], 175/32)))
+
         # Background loading and resizing
 
         self._background = pygame.image.load(self._mediapath + 'background.png')
@@ -86,7 +90,7 @@ class PyGameModeSelectionTemplate(ITemplate):
         # Menu cursor icon loading and resizing
 
         self._elemarrow = pygame.image.load(self._mediapath + 'arrow.png')
-        self._elemarrow = pygame.transform.scale(self._elemarrow, PyGameModeSelectionTemplate._ARROWSIZE)
+        self._elemarrow = pygame.transform.scale(self._elemarrow, self._arrowsize)
 
         # Buttons
 
@@ -172,15 +176,15 @@ class PyGameModeSelectionTemplate(ITemplate):
 
         if self._selected == 0:
             cursorposition = (nameframeposition[0] + PyGameModeSelectionTemplate._NAMEFRAMESIZE[0] / 2 -
-                              PyGameModeSelectionTemplate._ARROWSIZE[0] / 2,
+                              self._arrowsize[0] / 2,
                               nameframeposition[1] + PyGameModeSelectionTemplate._NAMEFRAMESIZE[1] - 30)
         elif self._selected == 2:
             cursorposition = (backbuttonposition[0] + PyGameModeSelectionTemplate._BUTTONSSIZE[0] / 2 -
-                              PyGameModeSelectionTemplate._ARROWSIZE[0] / 2,
+                              self._arrowsize[0] / 2,
                               backbuttonposition[1] + PyGameModeSelectionTemplate._BUTTONSSIZE[1] - 15)
         else:
             cursorposition = (matchmakingbuttonposition[0] + PyGameModeSelectionTemplate._BUTTONSSIZE[0] / 2 -
-                              PyGameModeSelectionTemplate._ARROWSIZE[0] / 2,
+                              self._arrowsize[0] / 2,
                               matchmakingbuttonposition[1] + PyGameModeSelectionTemplate._BUTTONSSIZE[1] - 15)
         self._screen.blit(self._elemarrow, cursorposition)
 

@@ -30,13 +30,11 @@ class PyGameComposer(IViewComposer):
         windowname = "BYOB - Bring Your Own Bomb!"
         pygame.display.set_caption(windowname)
 
-
         self._frameratemanager: Clock = pygame.time.Clock()
         self._framerate: int = 60  # TODO prendere framerate da file di configurazione
 
         # TODO prendere dipensioni da file di configurazione
         self._screen: Screen = Screen(screenobject, width, height, self._framerate)
-
 
         # path base per i media
         self._basemediapath: str = "foundations/media/"  # TODO prendere da file di configurazione
