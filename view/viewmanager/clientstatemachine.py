@@ -39,7 +39,7 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         self._viewcomposer = viewcomposer
 
         # la macchina a stati si mette in ascolto dei messaggi da parte del server
-        # self._server.addListener(self.input) # TODO deve essere decommentato
+        self._server.addListener(self.input) # TODO deve essere decommentato
 
         # inizializzazione del view composer
         # la macchina a stati si mette in ascolto degli input utente
