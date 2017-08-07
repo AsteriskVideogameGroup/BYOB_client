@@ -109,7 +109,7 @@ class PyGameModeSelectionTemplate(ITemplate):
                          self._screendims[1] / 20)
         self._screen.blit(self._title, titleposition)
 
-        nameframeposition = ((self._screendims[0] - PyGameModeSelectionTemplate._NAMEFRAMESIZE[0]) / 2, 130)
+        nameframeposition = ((self._screendims[0] - PyGameModeSelectionTemplate._NAMEFRAMESIZE[0]) / 2, self._screendims[1]/5.5)
         self._screen.blit(self._nameframe, nameframeposition)
 
         descriptionframeposition = ((self._screendims[0] - PyGameModeSelectionTemplate._NAMEFRAMESIZE[0]) / 2,
