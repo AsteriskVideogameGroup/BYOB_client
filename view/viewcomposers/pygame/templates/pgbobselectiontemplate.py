@@ -22,21 +22,21 @@ class PyGameBobSelectionTemplate():#ITemplate):
     _CHARACTERSOFSET = 20
     _CHARACTERSIZE = (66, 66)
     _PORTRAITDIMENSIONS = (150,150)
+    _COUNTDOWNSTART = 10 # TODO DA FILE
     _BOBSCOLUMN = 5
     _MEDIAPATH = "bobselection/"
     _FONTPATH = "font/"
 
     def __init__(self):
 
-        self._font_path = None
+        self._fontpath = None
         self._mediapath = None
-        self._eventlistnercallback = None
+        self._eventlistenercallback = None
         self._screen = None
         self._screendims = None
         self._modelbobs = []
         self._matrixbobs = []
         self._background = None
-        self._font_title = None
         self._title = None
         self._descriptionframe = None
         self._cursor = None
@@ -45,23 +45,27 @@ class PyGameBobSelectionTemplate():#ITemplate):
             self._modelbobs.append([])
             self._matrixbobs.append([])
         self._selected = (1, 0)
+        self._canchoose = False
+        self._currentcall = 0
+        self._fps = 0
 
     def initialize(self, screen: Screen, mediapath: str,
                    observercallback: Callable[[object, GameMessages, Dict[str, any]], None]):
-
         WHITE = (255, 255, 255)
         YELLOW = (255, 240, 1)
 
         # Font init
 
         pygame.font.init()
-        self._font_path = mediapath + PyGameBobSelectionTemplate._FONTPATH + "Emulogic/emulogic.ttf"
+        self._fontpath = mediapath + PyGameBobSelectionTemplate._FONTPATH + "Emulogic/emulogic.ttf"
         self._mediapath = mediapath + PyGameBobSelectionTemplate._MEDIAPATH
 
         # Screen details init
 
         self._screen = screen.screen
         self._screendims = screen.dimensions
+        self._fps = screen.fps
+
 
         # Callback init
 
@@ -73,11 +77,7 @@ class PyGameBobSelectionTemplate():#ITemplate):
         self._background = pygame.transform.scale(self._background, self._screendims)
 
         # Title defining
-
-        title = "Choose your BoB!"
-        font_title_size = 24
-        self._font_title = pygame.font.Font(self._font_path, font_title_size)
-        self._title = self._font_title.render(title, 1, WHITE)
+        self._title = "Choose your BoB!"
 
         # Description frame picture loading and resizing
 
@@ -93,18 +93,22 @@ class PyGameBobSelectionTemplate():#ITemplate):
         # Menu icon loading and resizing
 
         self._icons = {
-            'damage' : pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/damage.png'),
-                                              PyGameBobSelectionTemplate._ICONSIZE),
-            'life' : pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/life.png'),
-                                              PyGameBobSelectionTemplate._ICONSIZE),
-            'range' : pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/range.png'),
-                                              PyGameBobSelectionTemplate._ICONSIZE),
-            'bombnumber' : pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/bombnumber.png'),
-                                              PyGameBobSelectionTemplate._ICONSIZE),
-            'speed' : pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/speed.png'),
-                                              PyGameBobSelectionTemplate._ICONSIZE),
-            'power': pygame.font.Font(self._font_path, 24).render("S", 1, YELLOW)
+            'damage': pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/damage.png'),
+                                             PyGameBobSelectionTemplate._ICONSIZE),
+            'life': pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/life.png'),
+                                           PyGameBobSelectionTemplate._ICONSIZE),
+            'range': pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/range.png'),
+                                            PyGameBobSelectionTemplate._ICONSIZE),
+            'bombnumber': pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/bombnumber.png'),
+                                                 PyGameBobSelectionTemplate._ICONSIZE),
+            'speed': pygame.transform.scale(pygame.image.load(self._mediapath + 'icons/speed.png'),
+                                            PyGameBobSelectionTemplate._ICONSIZE),
+            'power': pygame.font.Font(self._fontpath, 24).render("S", 1, YELLOW)
         }
+
+        # From now to the end of countdown the user can choose the Bob
+
+        self._canchoose = True
         
     def print(self):
 
@@ -117,9 +121,22 @@ class PyGameBobSelectionTemplate():#ITemplate):
 
         # Title positioning and print
 
-        titleposition = ((self._screendims[0] - self._title.get_rect().width) / 2,
+        title = ""
+        font_title_size = 24
+        if self._canchoose:
+            remainingtime = PyGameBobSelectionTemplate._COUNTDOWNSTART - int(self._currentcall/self._fps)
+            if remainingtime > 0:
+                title = self._title + ' - ' + str(remainingtime)
+            else:
+                self._canchoose = False
+        else:
+            title = self._title + " - Waiting for your opponents"
+
+        font_title = pygame.font.Font(self._fontpath, font_title_size)
+        printabletitle = font_title.render(title, 1, WHITE)
+        titleposition = ((self._screendims[0] - printabletitle.get_rect().width) / 2,
                          self._screendims[1] / 20)
-        self._screen.blit(self._title, titleposition)
+        self._screen.blit(printabletitle, titleposition)
 
         # Bob selectable positioning and print
 
@@ -136,9 +153,12 @@ class PyGameBobSelectionTemplate():#ITemplate):
             position = (
             position[0] + bobdistance + PyGameBobSelectionTemplate._CHARACTERSIZE[0], self._screendims[1] / 5.5)
 
+        # Cursor positioning and print
+
         cursorposition = (positions[self._selected][0] - PyGameBobSelectionTemplate._CURSORSIZE[0]/5,
                           positions[self._selected][1] - PyGameBobSelectionTemplate._CURSORSIZE[1]/9)
-        self._screen.blit(self._cursor, cursorposition)
+        if self._canchoose:
+            self._screen.blit(self._cursor, cursorposition)
 
         # Description frame positioning and print
 
@@ -158,7 +178,7 @@ class PyGameBobSelectionTemplate():#ITemplate):
         currentbob =  self._modelbobs[self._selected[0]][self._selected[1]]
         bobname = currentbob.name
         font_name_size = 20
-        fontname = pygame.font.Font(self._font_path, font_name_size)
+        fontname = pygame.font.Font(self._fontpath, font_name_size)
         bobname = fontname.render(bobname,1,WHITE)
         textwidth = bobname.get_rect().width
         bobnameposition = (descriptionframeposition[0] + (PyGameBobSelectionTemplate._DESCRIPTIONSIZE[0]-textwidth)/2,
@@ -181,7 +201,7 @@ class PyGameBobSelectionTemplate():#ITemplate):
         }
         for key in self._icons.keys():
             self._screen.blit(self._icons[key],iconposition)
-            stat = pygame.font.Font(self._font_path, statsfontsize).render(": "+stats[key], 1, WHITE)
+            stat = pygame.font.Font(self._fontpath, statsfontsize).render(": " + stats[key], 1, WHITE)
             statposition = (iconposition[0] + PyGameBobSelectionTemplate._ICONSIZE[0],
                             iconposition[1])
             self._screen.blit(stat, statposition)
@@ -189,56 +209,60 @@ class PyGameBobSelectionTemplate():#ITemplate):
             iconposition = (iconposition[0],
                         iconposition[1] + PyGameBobSelectionTemplate._ICONSIZE[0] + iconstep)
 
+
+        self._currentcall = (self._currentcall + 1)% (PyGameBobSelectionTemplate._COUNTDOWNSTART*self._fps + 1)
+
     def getInputs(self):
         for event in pygame.event.get():
 
             # System exit
             if event.type == pygame.QUIT:
-                self._eventlistnercallback(GameMessages.EXITPROGRAM)
+                self._eventlistenercallback(GameMessages.EXITPROGRAM)
                 pass
 
             # Navigation input from keyboard
 
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT or event.key == pygame.K_a:
-                    self._horizzontalnavigation(-1)
-                elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
-                    self._verticalnavigation(-1)
-                elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
-                    self._horizzontalnavigation(1)
-                elif event.key == pygame.K_UP or event.key == pygame.K_w:
-                    self._verticalnavigation(1)
+            if self._canchoose:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_LEFT or event.key == pygame.K_a:
+                        self._horizzontalnavigation(-1)
+                    elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                        self._verticalnavigation(-1)
+                    elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:
+                        self._horizzontalnavigation(1)
+                    elif event.key == pygame.K_UP or event.key == pygame.K_w:
+                        self._verticalnavigation(1)
 
-                elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
-                    self._enter()
+                    elif event.key == pygame.K_RETURN or event.key == pygame.K_SPACE:
+                        self._enter()
 
-            # Navigation input from joypad
+                # Navigation input from joypad
 
-            elif event.type == pygame.JOYAXISMOTION:
-                axisthreshold = 0.99
+                elif event.type == pygame.JOYAXISMOTION:
+                    axisthreshold = 0.99
 
-                value = event.value
-                if abs(value) > axisthreshold:
+                    value = event.value
+                    if abs(value) > axisthreshold:
 
-                    if event.axis == JoypadControl.AXIS1:
-                        if value > 0:
-                            self._horizzontalnavigation(1)
-                        else:
-                            self._horizzontalnavigation(-1)
-                    if event.axis == 0:
-                        if value > 0:
-                            self._verticalnavigation(1)
-                        else:
-                            self._verticalnavigation(-1)
+                        if event.axis == JoypadControl.AXIS1:
+                            if value > 0:
+                                self._horizzontalnavigation(1)
+                            else:
+                                self._horizzontalnavigation(-1)
+                        if event.axis == 0:
+                            if value > 0:
+                                self._verticalnavigation(1)
+                            else:
+                                self._verticalnavigation(-1)
 
-            elif event.type == pygame.JOYBUTTONDOWN:
-                if event.button == JoypadControl.BUTTON0:
-                    self._enter()
+                elif event.type == pygame.JOYBUTTONDOWN:
+                    if event.button == JoypadControl.BUTTON0:
+                        self._enter()
 
-            elif event.type == pygame.JOYHATMOTION:
-                if event.hat == JoypadControl.DPAD:
-                    self._horizzontalnavigation(event.value[0])
-                    self._verticalnavigation(event.value[1])
+                elif event.type == pygame.JOYHATMOTION:
+                    if event.hat == JoypadControl.DPAD:
+                        self._horizzontalnavigation(event.value[0])
+                        self._verticalnavigation(event.value[1])
 
 
     def _horizzontalnavigation(self, direction: int):
@@ -248,7 +272,9 @@ class PyGameBobSelectionTemplate():#ITemplate):
         self._selected = (self._selected[0], (self._selected[1] + direction) % len(self._matrixbobs[self._selected[0]]))
 
     def _enter(self):
-        pass
+        if self._canchoose:
+            #TODO MESSAGE
+            self._canchoose = False
 
     def setAssets(self, kwargs: Dict[str, any]):
         bobs = kwargs['bobs']
@@ -267,4 +293,4 @@ class PyGameBobSelectionTemplate():#ITemplate):
         pass
 
     def registerEventListener(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
-        self._eventlistnercallback = callback
+        self._eventlistenercallback = callback
