@@ -87,7 +87,7 @@ class PyGameGameWaitingTemplate(ITemplate):
         # Loading string rendering, positioning and print
 
         loadingstring = "Looking for a game" + "." * int(
-            (3 * self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)
+            (1 * self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)
         loadinglabel = self._font.render(loadingstring, 1, WHITE)
         labeldimensions = (loadinglabel.get_rect().width, loadinglabel.get_rect().height)
 
@@ -114,7 +114,7 @@ class PyGameGameWaitingTemplate(ITemplate):
             (characterposition[0] + PyGameGameWaitingTemplate._CHARACTERSIZE[0],
              characterposition[1] - 2 * questionmarkdimensions[1]),
         ]
-        for i in range(int((3 * self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)):
+        for i in range(int((1 * self._callnumber / self._fps) % PyGameGameWaitingTemplate._LOOPSECONDS)):
             self._screen.blit(questionmark, questionmarkpositions[i])
 
         # Increasing of number of print() made on this screen
