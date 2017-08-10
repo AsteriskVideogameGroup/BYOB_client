@@ -18,40 +18,27 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         self._viewcomposer: IViewComposer = None
         self._state: IClientState = None
 
-    @property
-    def currentstate(self) -> IClientState:
-        return self._state
-
-    @currentstate.setter
-    def currentstate(self, newstate: IClientState):
-        self._state = newstate
-
-    def initialize(self, server: ServerWrapper, viewcomposer: IViewComposer, initialstate: IClientState):
+    def init(self, initialstate: IClientState):
         # assegnazione dello stato iniziale alla macchina
-        self.currentstate = initialstate
+        self._state = initialstate
 
         # inizializzazione dello stato
-        self.currentstate.initialize(server, viewcomposer)
-
-        # memorizzazione dei riferimenti agli oggetti server e viewcomposer
-        # serviranno per i cambiamenti di stato
-        self._server = server
-        self._viewcomposer = viewcomposer
+        self._state.initialize(self._server, self._viewcomposer)
 
         # la macchina a stati si mette in ascolto dei messaggi da parte del server
-        self._server.addListener(self.input) # TODO deve essere decommentato
+        self._server.addListener(self._input)  # TODO deve essere decommentato
 
         # inizializzazione del view composer
         # la macchina a stati si mette in ascolto degli input utente
-        self._viewcomposer.init(self.input)
+        self._viewcomposer.init(self._input)
 
         # run dello stato iniziale
-        self.currentstate.run()
+        self._state.run()
 
         # avvio del viewcomposer
         self._viewcomposer.startWorking()
 
-    def input(self, message: GameMessages, data: Dict[str, any] = None):
+    def _input(self, message: GameMessages, data: Dict[str, any] = None):
 
         # controllo di uscita dal programma
         if message == GameMessages.EXITPROGRAM:
@@ -69,5 +56,29 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
             self.currentstate.run()  # esecuzione del nuovo stato
         else:
             print("Nessun cambiamento di stato")
+
+    @property
+    def serverwrapper(self) -> ServerWrapper:
+        return self._server
+
+    @serverwrapper.setter
+    def serverwrapper(self, wrapper: ServerWrapper):
+        self._server = wrapper
+
+    @property
+    def viewcomposer(self) -> IViewComposer:
+        return self._viewcomposer
+
+    @viewcomposer.setter
+    def viewcomposer(self, composer: IViewComposer):
+        self._viewcomposer = composer
+
+    @property
+    def currentstate(self) -> IClientState:
+        return self._state
+
+    @currentstate.setter
+    def currentstate(self, newstate: IClientState):
+        self._state = newstate
 
 

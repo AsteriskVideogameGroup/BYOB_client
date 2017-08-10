@@ -21,8 +21,7 @@ class Client(Subject):
 
         self._eventlisteners: List[Callable[[object, GameMessages, Dict[str, any]], None]] = list()
 
-        # TODO user id deve essere impostato mediante login
-        self._userid = "p1"
+        self._userid: str = None
 
     @property
     def clientid(self) -> str:

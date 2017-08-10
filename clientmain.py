@@ -1,5 +1,6 @@
 from time import sleep
 
+from foundations.inversionofcontrol.dicontainer import DepInjContainer
 from foundations.network.clienthandling.client import Client
 from foundations.network.corba.corbamanagerfactory import CorbaManagerFactory
 from foundations.network.corba.icorbamanager import ICorbaManager
@@ -11,29 +12,32 @@ from view.viewmanager.clientstatemachine import ClientStateMachine
 from view.viewmanager.machinestates.iclientstate import IClientState
 from view.viewmanager.machinestates.mainmenustate import MainMenuState
 
-corba: ICorbaManager = CorbaManagerFactory().getCorbaManager()
-corba.init()
 
-client: Client = Client()
+if __name__ == "__main__":
 
-server: ServerWrapper = ServerWrapper()
+    # inizializzazione container IoC
+    container: DepInjContainer = DepInjContainer().init("etc/config.json")
 
-server.init(corba)
-server.registerClient(client)
+    # inizializzazione comunicazione di rete CORBA
+    corbafactory: CorbaManagerFactory = container.getObject("corbamangerfactory")
+    corbamanger: ICorbaManager = corbafactory.getCorbaManager()
+    corbamanger.init()
 
-print("tutto ok fin qui")
+    # instanziazione wrapper del server
+    server: ServerWrapper = container.getObject("serverwrapper")
+    server.init()
+
+    # instanziazione wrapper del client e registrazione sul server
+    client: Client = Client()
+    client.playerid = "pepito.sbazzeguti@icloud.com"
+    server.registerClient(client)
+
+    # inizializzazione macchina a stati
+    machine: ClientStateMachine = container.getObject("clientstatemachine")
+    initialstate: IClientState = MainMenuState()
+    machine.init(initialstate)
 
 
-machine: ClientStateMachine = ClientStateMachine()
-viewcomposer: IViewComposer = PyGameComposer()
-initialstate: IClientState = MainMenuState()
 
-machine.initialize(server, viewcomposer, initialstate)
-
-print("pure qui ok")
-
-#machine.input(GameMessages.INITUNRANKEDGAME)
-
-print("pure qui ok 2")
 
 

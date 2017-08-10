@@ -1,0 +1,52 @@
+{
+  "pyromanager": {
+    "module": "foundations.network.corba.pyrocorbamanager",
+    "class": "PyroCorbaManager",
+    "properties" : []
+  },
+
+  "corbamangerfactory": {
+    "module": "foundations.network.corba.corbamanagerfactory",
+    "class": "CorbaManagerFactory",
+    "properties" : [
+      {
+        "name": "corbamanager",
+        "ref": "pyromanager"
+      }
+    ]
+  },
+
+  "serverwrapper": {
+    "module": "foundations.network.serverwrapper.serverwrapper",
+    "class": "ServerWrapper",
+    "properties" : [
+      {
+        "name": "corbamanagerfactory",
+        "ref": "corbamangerfactory"
+      }
+    ]
+  },
+
+  "viewcomposer": {
+    "module": "view.viewcomposers.pygame.pygamecomposer",
+    "class": "PyGameComposer",
+    "properties" : []
+  },
+
+
+  "clientstatemachine": {
+    "module": "view.viewmanager.clientstatemachine",
+    "class": "ClientStateMachine",
+    "properties" : [
+      {
+        "name": "serverwrapper",
+        "ref": "serverwrapper"
+      },
+      {
+        "name": "viewcomposer",
+        "ref": "viewcomposer"
+      }
+    ]
+  }
+
+}
