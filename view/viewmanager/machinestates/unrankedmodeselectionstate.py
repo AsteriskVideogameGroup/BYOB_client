@@ -41,11 +41,11 @@ class UnrankedModeSelectionState(IClientState):
 
         # TODO prendere da file!!!
         mod1: ClientMode = ClientMode()
-        mod1.id = "mod1"
-        mod1.name = "modalità1"
-        mod1.dimensions = (5, 7)
-        mod1.duration = 100
-        mod1.numplayers = 6
+        mod1.id = "classic_mode"
+        mod1.name = "classic_mode"
+        mod1.dimensions = (5, 5)
+        mod1.duration = 5
+        mod1.numplayers = 4
 
         mod2: ClientMode = ClientMode()
         mod2.id = "mod2"

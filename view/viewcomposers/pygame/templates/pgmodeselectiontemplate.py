@@ -131,7 +131,7 @@ class PyGameModeSelectionTemplate(ITemplate):
         self._screen.blit(namelabel, nameposition)
 
         numplayerstring = "players: " + str(self._modes[self._currentMode].numplayers)
-        durationstring = "time: " + str(self._modes[self._currentMode].duration) + " mins"
+        durationstring = "time: " + str(self._modes[self._currentMode].duration) + " secs"
         mapdimensionsstring = "Map size: " + str(self._modes[self._currentMode].dimensions[0]) + "x" \
                               + str(self._modes[self._currentMode].dimensions[1])
 

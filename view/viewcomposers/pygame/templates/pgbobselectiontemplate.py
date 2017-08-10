@@ -12,7 +12,7 @@ from view.viewcomposers.itemplate import ITemplate
 from model.clientgamemanage.clientbob import ClientBob
 
 
-class PyGameBobSelectionTemplate():#ITemplate):
+class PyGameBobSelectionTemplate(ITemplate):
 
     _CURSORSIZE = (100, 100)
     _NAMEFRAMESIZE = (700, 100)
