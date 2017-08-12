@@ -1,0 +1,10 @@
+[
+  {
+    "id": "classic_mode",
+    "name": "Classica",
+    "mapwidth": 5,
+    "mapheight": 5,
+    "gamedurationinseconds": 300,
+    "maxplayers": 4
+  }
+]

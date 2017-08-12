@@ -1,6 +1,7 @@
 import os
 from typing import List, Dict
 
+from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.iviewcomposer import IViewComposer
@@ -16,7 +17,7 @@ class MainMenuState(IClientState):
 
         self._currentselection: int = 0  # indice di selezione del giocatore
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, daofactory: IDAOAbstractFactory):
         self._viewcomposer = viewmanager
         self._server = gameserver
 

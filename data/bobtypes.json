@@ -1,0 +1,10 @@
+[
+  {
+    "name" : "classic_bob",
+	"damage" : 1,
+	"bombs" : 1,
+	"lives" : 200,
+	"speed" : 6,
+	"specialpowerid" : "none"
+  }
+]

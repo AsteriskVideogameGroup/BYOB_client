@@ -3,6 +3,7 @@ from typing import Dict
 
 import sys
 
+from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.singleton import SingletonMetaclass
 from foundations.sysmessages.gamemessages import GameMessages
@@ -17,13 +18,14 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         self._server: ServerWrapper = None
         self._viewcomposer: IViewComposer = None
         self._state: IClientState = None
+        self._daofactory: IDAOAbstractFactory = None
 
     def init(self, initialstate: IClientState):
         # assegnazione dello stato iniziale alla macchina
         self._state = initialstate
 
         # inizializzazione dello stato
-        self._state.initialize(self._server, self._viewcomposer)
+        self._state.initialize(self._server, self._viewcomposer, self._daofactory)
 
         # la macchina a stati si mette in ascolto dei messaggi da parte del server
         self._server.addListener(self._input)  # TODO deve essere decommentato
@@ -52,7 +54,7 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
         if newstate is not None:
             newstate.setPreviousState(self.currentstate)
             self.currentstate = newstate
-            self.currentstate.initialize(self._server, self._viewcomposer)
+            self.currentstate.initialize(self._server, self._viewcomposer, self._daofactory)
             self.currentstate.run()  # esecuzione del nuovo stato
         else:
             print("Nessun cambiamento di stato")
@@ -80,5 +82,13 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
     @currentstate.setter
     def currentstate(self, newstate: IClientState):
         self._state = newstate
+
+    @property
+    def daofactory(self) -> IDAOAbstractFactory:
+        return self._daofactory
+
+    @daofactory.setter
+    def daofactory(self, f: IDAOAbstractFactory):
+        self._daofactory = f
 
 

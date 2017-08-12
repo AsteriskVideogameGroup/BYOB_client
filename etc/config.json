@@ -45,6 +45,33 @@
       {
         "name": "viewcomposer",
         "ref": "viewcomposer"
+      },
+      {
+        "name": "daofactory",
+        "ref": "daofactory"
+      }
+    ]
+  },
+
+  "daofactory": {
+    "module": "foundations.dao.filedata.daofactory",
+    "class": "DAOFactory",
+    "properties" : [
+      {
+        "name": "modedao",
+        "ref": "filemodedao"
+      }
+    ]
+  },
+
+  "filemodedao": {
+
+    "module": "foundations.dao.filedata.modedao",
+    "class": "ModeDAO",
+    "properties" : [
+      {
+        "name": "filepath",
+        "value": "data/modes.json"
       }
     ]
   }

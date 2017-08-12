@@ -1,5 +1,6 @@
 from typing import Dict
 
+from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.state import State
 from foundations.sysmessages.gamemessages import GameMessages
@@ -29,6 +30,6 @@ class ChooseBobState(IClientState):
         # TODO gestire cambiamenti di stato
         return newstate
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, daofactory: IDAOAbstractFactory):
         self._viewcomposer = viewmanager
         self._server = gameserver

@@ -1,5 +1,6 @@
 from typing import Dict
 
+from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.state import State
 from foundations.sysmessages.gamemessages import GameMessages
@@ -24,7 +25,7 @@ class GameCreationWaitState(IClientState):
 
         return newstate
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, daofactory: IDAOAbstractFactory):
         self._viewcomposer = viewmanager
         self._server = gameserver
 
@@ -42,7 +43,7 @@ class GameCreationWaitState(IClientState):
 
         # invio messaggio di make new game al server
         # TODO effettuare il make new game
-        self._server.makeNewGame(selectedmode, isranked)
+        #self._server.makeNewGame(selectedmode, isranked)
 
     def setPreviousState(self, state: IClientState):
         pass

@@ -1,5 +1,6 @@
 from time import sleep
 
+from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.inversionofcontrol.dicontainer import DepInjContainer
 from foundations.network.clienthandling.client import Client
 from foundations.network.corba.corbamanagerfactory import CorbaManagerFactory
@@ -31,6 +32,9 @@ if __name__ == "__main__":
     client: Client = Client()
     client.playerid = "pepito.sbazzeguti@icloud.com"
     server.registerClient(client)
+
+    # inizializzazione DAO
+    corbafactory: IDAOAbstractFactory = container.getObject("daofactory")
 
     # inizializzazione macchina a stati
     machine: ClientStateMachine = container.getObject("clientstatemachine")

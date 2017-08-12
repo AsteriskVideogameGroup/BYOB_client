@@ -1,5 +1,6 @@
 from typing import Dict, List
 
+from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
 from model.clientgamemanage.clientmode import ClientMode
@@ -18,6 +19,8 @@ class UnrankedModeSelectionState(IClientState):
 
         self._previousstate: IClientState = None
 
+        self._daofactory: IDAOAbstractFactory = None
+
     def input(self, messageinput: GameMessages, data: Dict[str, any] = None) -> IClientState:
         newstate: IClientState = None
 
@@ -30,16 +33,19 @@ class UnrankedModeSelectionState(IClientState):
 
         return newstate
 
-    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer):
+    def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, daofactory: IDAOAbstractFactory):
         self._viewcomposer = viewmanager
         self._server = gameserver
+        self._daofactory: IDAOAbstractFactory = daofactory
 
     def run(self):
         print("Devi scegliere una modalità")
 
         self._viewcomposer.show(Templates.GAMESELECTION)
 
-        # TODO prendere da file!!!
+        modes: List[ClientMode] = self._daofactory.getModeDAO().getAll()
+
+        '''# TODO prendere da file!!!
         mod1: ClientMode = ClientMode()
         mod1.id = "classic_mode"
         mod1.name = "classic_mode"
@@ -59,12 +65,12 @@ class UnrankedModeSelectionState(IClientState):
         mod3.name = "modalità3"
         mod3.dimensions = (8, 7)
         mod3.duration = 700
-        mod3.numplayers = 4
+        mod3.numplayers = 4'''
 
         # TODO prendere da file
         args: Dict[str, any] = {
             "ranked": False,
-            "modes": [mod1, mod2, mod3]
+            "modes": modes
         }
 
         self._viewcomposer.setAssets(args)
