@@ -43,7 +43,7 @@ class GameCreationWaitState(IClientState):
 
         # invio messaggio di make new game al server
         # TODO effettuare il make new game
-        #self._server.makeNewGame(selectedmode, isranked)
+        self._server.makeNewGame(selectedmode, isranked)
 
     def setPreviousState(self, state: IClientState):
         pass

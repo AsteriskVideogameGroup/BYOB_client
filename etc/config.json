@@ -23,6 +23,10 @@
       {
         "name": "corbamanagerfactory",
         "ref": "corbamangerfactory"
+      },
+      {
+        "name": "matchmakinghandlerid",
+        "value": "matchmakinghandler"
       }
     ]
   },

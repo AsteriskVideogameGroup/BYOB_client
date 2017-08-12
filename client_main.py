@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     # instanziazione wrapper del client e registrazione sul server
     client: Client = Client()
-    client.playerid = "pepito.sbazzeguti@icloud.com"
+    client.playerid = "p4"
     server.registerClient(client)
 
     # inizializzazione DAO

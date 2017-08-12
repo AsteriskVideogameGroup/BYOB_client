@@ -7,7 +7,7 @@ from pygame.time import Clock
 from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from view.viewcomposers.itemplate import ITemplate
-from view.viewcomposers.pygame.templates.pgchoosebobtemplate import PyGameChooseBobTemplate
+from view.viewcomposers.pygame.templates.pgbobselectiontemplate import PyGameBobSelectionTemplate
 from view.viewcomposers.pygame.templates.pggamewaitingtemplate import PyGameGameWaitingTemplate
 from view.viewcomposers.pygame.templates.pgmainmenutemplate import PyGameMainMenuTemplate
 from view.viewcomposers.pygame.templates.pgmodeselectiontemplate import PyGameModeSelectionTemplate
@@ -54,7 +54,7 @@ class PyGameComposer(IViewComposer):
             Templates.MAINMENU: PyGameMainMenuTemplate(),
             Templates.GAMESELECTION: PyGameModeSelectionTemplate(),
             Templates.GAMEWAIT: PyGameGameWaitingTemplate(),
-            Templates.CHOOSEBOB: PyGameChooseBobTemplate()
+            Templates.CHOOSEBOB: PyGameBobSelectionTemplate()
         }
 
     def init(self, eventhandlercallback: Callable[[object, GameMessages, Dict[str, any]], None]):

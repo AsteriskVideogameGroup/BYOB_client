@@ -45,4 +45,3 @@ class ServerWrapper(metaclass=SingletonMetaclass):
     @corbamanagerfactory.setter
     def corbamanagerfactory(self, manager: CorbaManagerFactory):
         self._corbamanagerfactory = manager
-
