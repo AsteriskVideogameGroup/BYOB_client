@@ -1,9 +1,11 @@
-from typing import Dict
+from typing import Dict, List
 
+from foundations.dao.iclientbobdao import IClientBobDAO
 from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.state import State
 from foundations.sysmessages.gamemessages import GameMessages
+from model.clientgamemanage.clientbob import ClientBob
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState
@@ -14,9 +16,14 @@ class ChooseBobState(IClientState):
         self._viewcomposer: IViewComposer = None
         self._server: ServerWrapper = None
         self._data: Dict[str, any] = None
+        self._daofactory: IDAOAbstractFactory = None
 
     def run(self):
         self._viewcomposer.show(Templates.CHOOSEBOB)
+
+        bobs: List[ClientBob] = self._daofactory.getClientBobDAO().getAll()
+
+        self._viewcomposer.setAssets({"bobs": bobs})
 
     def setPreviousState(self, state: State):
         pass
@@ -25,7 +32,6 @@ class ChooseBobState(IClientState):
         pass
 
     def input(self, messageinput: GameMessages, data: Dict[str, any] = None) -> IClientState:
-
         newstate: IClientState = None
         # TODO gestire cambiamenti di stato
         return newstate
@@ -33,3 +39,4 @@ class ChooseBobState(IClientState):
     def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, daofactory: IDAOAbstractFactory):
         self._viewcomposer = viewmanager
         self._server = gameserver
+        self._daofactory = daofactory

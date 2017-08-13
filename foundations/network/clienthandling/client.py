@@ -49,10 +49,10 @@ class Client(Subject):
 
     def notifyGameReady(self, gamehandlerid: str):
         self.gamehandler = gamehandlerid
-        self._notify(GameMessages.MAPREADY)
+        self._notify(GameMessages.GAMECREATED)
 
     def notifyMapReady(self):
-        self._notify(GameMessages.GAMECREATED)
+        self._notify(GameMessages.MAPREADY)
 
     def detachEventListerners(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
         self._eventlisteners.remove(callback)

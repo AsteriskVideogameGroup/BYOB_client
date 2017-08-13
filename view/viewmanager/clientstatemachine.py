@@ -42,6 +42,9 @@ class ClientStateMachine(metaclass=SingletonMetaclass):
 
     def _input(self, message: GameMessages, data: Dict[str, any] = None):
 
+        print("Messaggio ricevuto:")
+        print(message)
+
         # controllo di uscita dal programma
         if message == GameMessages.EXITPROGRAM:
             os._exit(1)

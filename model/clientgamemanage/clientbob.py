@@ -1,5 +1,4 @@
 class ClientBob:
-
     def __init__(self):
         self._id: str = None
         self._name: str = None
@@ -7,7 +6,7 @@ class ClientBob:
         self._speedmodifier: int = 0
         self._placeblebombsmodifier: int = 0
         self._power: str = None
-        #self._rangemodifier: int = 0
+        # self._rangemodifier: int = 0
         self._damagemodifier: int = 0
 
     @property
@@ -52,7 +51,7 @@ class ClientBob:
 
     @property
     def power(self) -> str:
-        return  self._power
+        return self._power
 
     @power.setter
     def power(self, power: str):
@@ -73,3 +72,6 @@ class ClientBob:
     @rangemodifier.setter
     def rangemodifier(self, value: int):
         self._rangemodifier = value'''
+
+    def __str__(self) -> str:
+        return "ID: {0}, NAME: {1}, LIVES: {2}".format(self._id, self._name, self._lifemodifier)

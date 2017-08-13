@@ -85,6 +85,10 @@
       {
         "name": "modedao",
         "ref": "filemodedao"
+      },
+      {
+        "name": "clientbobdao",
+        "ref": "fileclientbobdao"
       }
     ]
   },
@@ -97,6 +101,18 @@
       {
         "name": "filepath",
         "value": "data/modes.json"
+      }
+    ]
+  },
+
+  "fileclientbobdao": {
+
+    "module": "foundations.dao.filedata.clientbobdao",
+    "class": "ClientBobDAO",
+    "properties" : [
+      {
+        "name": "filepath",
+        "value": "data/bobtypes.json"
       }
     ]
   }

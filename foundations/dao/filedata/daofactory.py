@@ -12,12 +12,12 @@ class DAOFactory(IDAOAbstractFactory):
         return self._modedao
 
     def getClientBobDAO(self) -> IClientBobDAO:
-        return self._modedao
+        return self._clientbobdao
 
     def init(self):
         if self._modedao is not None:
             print("DAO factory ready")
-        if self._modedao is not None:
+        if self._clientbobdao is not None:
             print("DAO factory ready")
 
     @property
@@ -32,6 +32,6 @@ class DAOFactory(IDAOAbstractFactory):
     def clientbobdao(self) -> IClientBobDAO:
         return self._clientbobdao
 
-    @modedao.setter
+    @clientbobdao.setter
     def clientbobdao(self, dao: IClientBobDAO):
         self._clientbobdao = dao

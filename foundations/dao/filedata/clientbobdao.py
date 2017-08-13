@@ -5,7 +5,7 @@ from foundations.dao.iclientbobdao import IClientBobDAO
 from model.clientgamemanage.clientbob import ClientBob
 
 
-class BobDescriptionDAO(IClientBobDAO):
+class ClientBobDAO(IClientBobDAO):
     def __init__(self):
         self._path: str = None
 
