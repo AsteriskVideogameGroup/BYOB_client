@@ -1,12 +1,10 @@
 import abc
 
-# from foundations.dao.ibobdescriptiondao import IBobDescriptionDAO
+from foundations.dao.iclientbobdao import IClientBobDAO
 from foundations.dao.imodedao import IModeDAO
-# from foundations.dao.iplayerdao import IPlayerDAO
 
 
 class IDAOAbstractFactory(metaclass=abc.ABCMeta):
-
     @abc.abstractmethod
     def init(self):
         pass
@@ -19,7 +17,7 @@ class IDAOAbstractFactory(metaclass=abc.ABCMeta):
     def getModeDAO(self) -> IModeDAO:
         pass
 
-    '''@abc.abstractmethod
-    def getBobDescriptionDAO(self) -> IBobDescriptionDAO:
-        pass'''
-    # TODO bisogna mettere la gestione dei descrittori dei bob
+    @abc.abstractmethod
+    def getClientBobDAO(self) -> IClientBobDAO:
+        pass
+        # TODO bisogna mettere la gestione dei descrittori dei bob

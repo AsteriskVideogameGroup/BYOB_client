@@ -7,7 +7,7 @@ class ClientBob:
         self._speedmodifier: int = 0
         self._placeblebombsmodifier: int = 0
         self._power: str = None
-        self._rangemodifier: int = 0
+        #self._rangemodifier: int = 0
         self._damagemodifier: int = 0
 
     @property
@@ -66,10 +66,10 @@ class ClientBob:
     def damagemodifier(self, value: int):
         self._damagemodifier = value
 
-    @property
+    '''@property
     def rangemodifier(self) -> int:
         return self._rangemodifier
 
     @rangemodifier.setter
     def rangemodifier(self, value: int):
-        self._rangemodifier = value
+        self._rangemodifier = value'''

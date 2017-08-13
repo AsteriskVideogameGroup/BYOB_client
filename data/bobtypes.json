@@ -1,10 +1,11 @@
 [
   {
-    "name" : "classic_bob",
-	"damage" : 1,
-	"bombs" : 1,
-	"lives" : 200,
-	"speed" : 6,
-	"specialpowerid" : "none"
+    "id" : "classic_bob",
+    "name": "Billy Bob",
+	"damagemodifier" : 1,
+	"placeblebombsmodifier" : 1,
+	"lifemodifier" : 200,
+	"speedmodifier" : 6,
+	"powerid" : "none"
   }
 ]

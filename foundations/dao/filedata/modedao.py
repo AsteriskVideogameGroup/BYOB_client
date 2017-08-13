@@ -10,12 +10,6 @@ class ModeDAO(IModeDAO):
     def __init__(self):
         self._path: str = None
 
-    def update(self, mode: ClientMode) -> ClientMode:
-        pass
-
-    def save(self, mode: ClientMode) -> ClientMode:
-        pass
-
     def getAll(self) -> List[ClientMode]:
         clientmodelist: List[ClientMode] = list()
         with open(self._path) as data_file:
@@ -32,9 +26,6 @@ class ModeDAO(IModeDAO):
             clientmodelist.append(clientmode)
 
         return clientmodelist
-
-    def getByID(self, id: str) -> ClientMode:
-        pass
 
     @property
     def filepath(self) -> str:
