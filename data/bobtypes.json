@@ -6,6 +6,18 @@
 	"placeblebombsmodifier" : 1,
 	"lifemodifier" : 200,
 	"speedmodifier" : 6,
-	"powerid" : "none"
+	"powerid" : "none",
+    "range": 2
+
+  },
+  {
+    "id" : "king_bob",
+    "name": "Your Bobness",
+	"damagemodifier" : 1,
+	"placeblebombsmodifier" : 1,
+	"lifemodifier" : 5,
+	"speedmodifier" : 6,
+	"powerid" : "none",
+    "range": 2
   }
 ]

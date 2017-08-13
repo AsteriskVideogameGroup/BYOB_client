@@ -23,6 +23,7 @@ class ClientBobDAO(IClientBobDAO):
             bob.lifemodifier = bobpersistent["lifemodifier"]
             bob.speedmodifier = bobpersistent["speedmodifier"]
             bob.power = bobpersistent["powerid"]
+            bob.rangemodifier = bobpersistent["range"]
 
             clientmodelist.append(bob)
 
