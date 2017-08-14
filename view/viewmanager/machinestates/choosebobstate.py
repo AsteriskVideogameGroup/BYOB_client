@@ -33,7 +33,15 @@ class ChooseBobState(IClientState):
 
     def input(self, messageinput: GameMessages, data: Dict[str, any] = None) -> IClientState:
         newstate: IClientState = None
-        # TODO gestire cambiamenti di stato
+
+        if messageinput == GameMessages.BOBCHOSEN:
+
+            # comunica al server la scelta
+            self._server.chooseBob(data["bob_id"])
+
+        if messageinput == GameMessages.MAPREADY:
+            print("* * * TUTTO E' PRONTO PER GIOCARE * * * ")
+
         return newstate
 
     def initialize(self, gameserver: ServerWrapper, viewmanager: IViewComposer, daofactory: IDAOAbstractFactory):

@@ -15,5 +15,6 @@ class GameMessages(Enum):
     ACCEPT: int = 8
     RANKEDMODESELECTED: int = 9
     UNRANKEDMODESELECTED: int = 10
+    BOBCHOSEN: int = 11
 
 

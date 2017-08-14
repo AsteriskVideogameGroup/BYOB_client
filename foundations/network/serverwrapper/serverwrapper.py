@@ -1,5 +1,6 @@
 from typing import Callable, Dict
 
+from control.gamemanageusecase.gamehandler import GameHandler
 from foundations.network.clienthandling.client import Client
 from foundations.network.corba.corbamanagerfactory import CorbaManagerFactory
 from foundations.network.corba.icorbamanager import ICorbaManager
@@ -11,9 +12,13 @@ from foundations.sysmessages.gamemessages import GameMessages
 class ServerWrapper(metaclass=SingletonMetaclass):
     def __init__(self):
         self._corbamanagerfactory: CorbaManagerFactory = None
+        self._client: Client = None
+
+        ''' HANDLERS '''
         self._matchmakinghandlerid: str = None
         self._matchmakinghandler: MatchMakingHandler = None
-        self._client: Client = None
+
+        self._gamehandler: GameHandler = None
 
     def init(self):
         self._matchmakinghandler = self._corbamanagerfactory.getCorbaManager().getFromSystem(self._matchmakinghandlerid)
@@ -26,9 +31,19 @@ class ServerWrapper(metaclass=SingletonMetaclass):
         if self._client is not None:
             self._client.registerEventListener(callback)
 
+    ''' OPERAZIONI SUL SERVER '''
+
     def makeNewGame(self, modeid: str, isranked: bool):
-        print(self._client.clientid)
         self._matchmakinghandler.makeNewGame(self._client.clientid, modeid, isranked)
+
+    def chooseBob(self, bobid: str):
+
+        # assicurati che il gamehandler sia noto al wrapper
+        self._initgamehandler()
+
+        # procedi alla scelta del bob sul server
+        self._gamehandler.chooseBob(self._client.playerid, bobid)
+
 
     @property
     def matchmakinghandlerid(self) -> str:
@@ -45,3 +60,7 @@ class ServerWrapper(metaclass=SingletonMetaclass):
     @corbamanagerfactory.setter
     def corbamanagerfactory(self, manager: CorbaManagerFactory):
         self._corbamanagerfactory = manager
+
+    def _initgamehandler(self):
+        if self._gamehandler is None:
+            self._gamehandler = self._corbamanagerfactory.getCorbaManager().getFromSystem(self._client.gamehandler)

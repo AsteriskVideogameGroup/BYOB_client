@@ -181,8 +181,8 @@ class PyGameBobSelectionTemplate(ITemplate):
         bobname = fontname.render(bobname, 1, WHITE)
         textwidth = bobname.get_rect().width
         bobnameposition = (
-        descriptionframeposition[0] + (PyGameBobSelectionTemplate._DESCRIPTIONSIZE[0] - textwidth) / 2,
-        descriptionframeposition[1] + PyGameBobSelectionTemplate._DESCRIPTIONSIZE[1] * (.4))
+            descriptionframeposition[0] + (PyGameBobSelectionTemplate._DESCRIPTIONSIZE[0] - textwidth) / 2,
+            descriptionframeposition[1] + PyGameBobSelectionTemplate._DESCRIPTIONSIZE[1] * (.4))
         self._screen.blit(bobname, bobnameposition)
 
         # Selected bob (and icons) stats positioning and print
@@ -271,7 +271,11 @@ class PyGameBobSelectionTemplate(ITemplate):
 
     def _enter(self):
         if self._canchoose:
-            # TODO MESSAGE
+            selectedbob: ClientBob = self._modelbobs[self._selected[0]][self._selected[1]]
+
+            self._eventlistenercallback(GameMessages.BOBCHOSEN, {"bob_id": selectedbob.id})
+
+            # l'utente non può più scegliere
             self._canchoose = False
 
     def setAssets(self, kwargs: Dict[str, any]):
