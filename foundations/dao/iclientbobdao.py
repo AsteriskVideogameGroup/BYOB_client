@@ -1,7 +1,7 @@
 import abc
 from typing import List
 
-from model.clientgamemanage.clientbob import ClientBob
+from model.gamemanage.clientbob import ClientBob
 
 
 class IClientBobDAO(metaclass=abc.ABCMeta):

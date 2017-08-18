@@ -9,7 +9,7 @@ from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from foundations.joypadsupport.joypadcontrol import JoypadControl
 from view.viewcomposers.itemplate import ITemplate
-from model.clientgamemanage.clientbob import ClientBob
+from model.gamemanage.clientbob import ClientBob
 
 
 class PyGameBobSelectionTemplate(ITemplate):

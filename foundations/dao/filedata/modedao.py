@@ -3,7 +3,7 @@ from typing import List, Dict
 from Pyro4.util import json
 
 from foundations.dao.imodedao import IModeDAO
-from model.clientgamemanage.clientmode import ClientMode
+from model.gamemanage.clientmode import ClientMode
 
 
 class ModeDAO(IModeDAO):

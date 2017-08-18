@@ -5,7 +5,7 @@ from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.state import State
 from foundations.sysmessages.gamemessages import GameMessages
-from model.clientgamemanage.clientbob import ClientBob
+from model.gamemanage.clientbob import ClientBob
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState

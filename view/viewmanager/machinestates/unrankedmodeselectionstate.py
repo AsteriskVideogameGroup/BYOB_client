@@ -3,7 +3,7 @@ from typing import Dict, List
 from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.sysmessages.gamemessages import GameMessages
-from model.clientgamemanage.clientmode import ClientMode
+from model.gamemanage.clientmode import ClientMode
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.gamecreationwaitstate import GameCreationWaitState

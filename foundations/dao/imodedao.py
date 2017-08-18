@@ -1,7 +1,7 @@
 import abc
 from typing import List
 
-from model.clientgamemanage.clientmode import ClientMode
+from model.gamemanage.clientmode import ClientMode
 
 
 class IModeDAO(metaclass=abc.ABCMeta):

@@ -2,7 +2,7 @@ import json
 from typing import List, Dict
 
 from foundations.dao.iclientbobdao import IClientBobDAO
-from model.clientgamemanage.clientbob import ClientBob
+from model.gamemanage.clientbob import ClientBob
 
 
 class ClientBobDAO(IClientBobDAO):
