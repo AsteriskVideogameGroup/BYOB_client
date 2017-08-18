@@ -9,7 +9,7 @@ from foundations.screenutils.screen import Screen
 from foundations.sysmessages.gamemessages import GameMessages
 from foundations.joypadsupport.joypadcontrol import JoypadControl
 from view.viewcomposers.itemplate import ITemplate
-from model.gamemanage.clientbob import ClientBob
+from model.gamemanage.clientbobdescription import ClientBobDescription
 
 
 class PyGameBobSelectionTemplate(ITemplate):
@@ -271,7 +271,7 @@ class PyGameBobSelectionTemplate(ITemplate):
 
     def _enter(self):
         if self._canchoose:
-            selectedbob: ClientBob = self._modelbobs[self._selected[0]][self._selected[1]]
+            selectedbob: ClientBobDescription = self._modelbobs[self._selected[0]][self._selected[1]]
 
             self._eventlistenercallback(GameMessages.BOBCHOSEN, {"bob_id": selectedbob.id})
 

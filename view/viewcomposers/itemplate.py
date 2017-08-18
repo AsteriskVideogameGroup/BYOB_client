@@ -20,5 +20,5 @@ class ITemplate(Subject):
         pass
 
     @abc.abstractmethod
-    def setAssets(self, **kwargs: dict):
+    def setAssets(self, kwargs: Dict[str, any]):
         pass

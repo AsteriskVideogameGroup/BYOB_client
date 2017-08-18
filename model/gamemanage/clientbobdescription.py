@@ -1,4 +1,4 @@
-class ClientBob:
+class ClientBobDescription:
     def __init__(self):
         self._id: str = None
         self._name: str = None

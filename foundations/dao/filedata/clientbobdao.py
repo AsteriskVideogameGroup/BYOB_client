@@ -2,20 +2,20 @@ import json
 from typing import List, Dict
 
 from foundations.dao.iclientbobdao import IClientBobDAO
-from model.gamemanage.clientbob import ClientBob
+from model.gamemanage.clientbobdescription import ClientBobDescription
 
 
 class ClientBobDAO(IClientBobDAO):
     def __init__(self):
         self._path: str = None
 
-    def getAll(self) -> List[ClientBob]:
-        clientmodelist: List[ClientBob] = list()
+    def getAll(self) -> List[ClientBobDescription]:
+        clientmodelist: List[ClientBobDescription] = list()
         with open(self._path) as data_file:
             data: List[Dict[str, any]] = json.load(data_file)
 
         for bobpersistent in data:
-            bob: ClientBob = ClientBob()
+            bob: ClientBobDescription = ClientBobDescription()
             bob.id = bobpersistent["id"]
             bob.name = bobpersistent["name"]
             bob.damagemodifier = bobpersistent["damagemodifier"]

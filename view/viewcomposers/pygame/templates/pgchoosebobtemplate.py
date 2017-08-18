@@ -27,7 +27,7 @@ class PyGameChooseBobTemplate(ITemplate):
     def detachEventListerners(self, callback: Callable[[object, GameMessages, Dict[str, any]], None]):
         pass
 
-    def setAssets(self, **kwargs: dict):
+    def setAssets(self, kwargs: Dict[str, any]):
         pass
 
     def initialize(self, screen: Screen, mediapath: str,

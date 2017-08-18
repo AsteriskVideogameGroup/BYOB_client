@@ -5,7 +5,7 @@ from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
 from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from foundations.oophelpers.state import State
 from foundations.sysmessages.gamemessages import GameMessages
-from model.gamemanage.clientbob import ClientBob
+from model.gamemanage.clientbobdescription import ClientBobDescription
 from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState
@@ -21,7 +21,7 @@ class ChooseBobState(IClientState):
     def run(self):
         self._viewcomposer.show(Templates.CHOOSEBOB)
 
-        bobs: List[ClientBob] = self._daofactory.getClientBobDAO().getAll()
+        bobs: List[ClientBobDescription] = self._daofactory.getClientBobDAO().getAll()
 
         self._viewcomposer.setAssets({"bobs": bobs})
 
