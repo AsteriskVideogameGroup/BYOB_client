@@ -7,7 +7,7 @@ class Screen:
         self._sceenmanager: object = screenmanager
         self._screenwidth: int = screenwidth
         self._screenheight: int = screenheight
-        self._fps : int = fps
+        self._fps: int = fps
 
     @property
     def screen(self) -> object:
