@@ -264,7 +264,12 @@ class PyGameBobSelectionTemplate(ITemplate):
                         self._verticalnavigation(event.value[1])
 
     def _horizzontalnavigation(self, direction: int):
-        self._selected = ((self._selected[0] + direction) % len(self._matrixbobs), self._selected[1])
+        cnt = 0
+        for i in range (len(self._matrixbobs)):
+            if self._matrixbobs[i]:
+                cnt = cnt + 1
+
+        self._selected = ((self._selected[0] + direction) % cnt, self._selected[1])
 
     def _verticalnavigation(self, direction: int):
         self._selected = (self._selected[0], (self._selected[1] + direction) % len(self._matrixbobs[self._selected[0]]))
