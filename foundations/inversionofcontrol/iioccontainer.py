@@ -1,7 +1,7 @@
 import abc
 
 
-class IDependencyInjectionContainer(metaclass=abc.ABCMeta):
+class IIoCContainer(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def init(self, configpath: str):
         pass
