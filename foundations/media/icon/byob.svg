@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:p="http://www.evolus.vn/Namespace/Pencil" xmlns:pencil="http://www.evolus.vn/Namespace/Pencil" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:table="urn:oasis:names:tc:opendocument:xmlns:table:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:fo="urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:meta="urn:oasis:names:tc:opendocument:xmlns:meta:1.0" xmlns:number="urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" xmlns:chart="urn:oasis:names:tc:opendocument:xmlns:chart:1.0" xmlns:dr3d="urn:oasis:names:tc:opendocument:xmlns:dr3d:1.0" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="urn:oasis:names:tc:opendocument:xmlns:form:1.0" xmlns:script="urn:oasis:names:tc:opendocument:xmlns:script:1.0" xmlns:ooo="http://openoffice.org/2004/office" xmlns:ooow="http://openoffice.org/2004/writer" xmlns:oooc="http://openoffice.org/2004/calc" xmlns:dom="http://www.w3.org/2001/xml-events" xmlns:xforms="http://www.w3.org/2002/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpt="http://openoffice.org/2005/report" xmlns:of="urn:oasis:names:tc:opendocument:xmlns:of:1.2" xmlns:rdfa="http://docs.oasis-open.org/opendocument/meta/rdfa#" xmlns:field="urn:openoffice:names:experimental:ooo-ms-interop:xmlns:field:1.0" xmlns:regexp="http://exslt.org/regular-expressions" xmlns:em="http://exslt.org/math" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="640" height="805" id="exportedSVG" version="1.1" pencil:version="1.2.2" sodipodi:docname=""><g inkscape:label="Untitled Page" inkscape:groupmode="layer" id="layer_untitled_page"><g><rect x="0" y="0" width="640" height="805" fill="none"/><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="d887b2cf15fa473886cf2b374352245f" transform="matrix(1,0,0,1,240,0)"><p:metadata><p:property name="box">160,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,1.0000000000000002</p:property><p:property name="fillColor">#752180FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="160" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(117, 33, 128); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="b9aef2f46ac04667be1aa6494fcd0eda" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="3b618b23737e4adaa8ed32f676d34e11">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#b9aef2f46ac04667be1aa6494fcd0eda" transform="translate(2, 2)" p:filter="url(#3b618b23737e4adaa8ed32f676d34e11)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="b253bd21cf0f47ab85d0bd6f1558044f"/>
+            <use xlink:href="#b9aef2f46ac04667be1aa6494fcd0eda"/>
+            <foreignObject x="1" y="80" width="158" height="0" p:name="text" id="2f80b94af66340fdacb3d79f890ef2d1" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="27eeb0a0ee1d440fb74265034555a06b" transform="matrix(1,0,0,1,80,160)"><p:metadata><p:property name="box">480,400</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,10</p:property><p:property name="fillColor">#FFE0BDFF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="480" height="400" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(255, 224, 189); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="6ac820379c674f96846ecd8df4ee4796" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="bd6aab611de945d4942b5d930cc168a5">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#6ac820379c674f96846ecd8df4ee4796" transform="translate(2, 2)" p:filter="url(#bd6aab611de945d4942b5d930cc168a5)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="7dfaeed2e4bd4f179869cac48b7df872"/>
+            <use xlink:href="#6ac820379c674f96846ecd8df4ee4796"/>
+            <foreignObject x="10" y="200" width="460" height="0" p:name="text" id="364db1352fa5479389154b97aa1f5d2d" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="77dc37fe3bfe4520a7ead50903b1a128" transform="matrix(1,0,0,1,80,560)"><p:metadata><p:property name="box">480,80</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,0</p:property><p:property name="fillColor">#314E60FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="480" height="80" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(49, 78, 96); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="67fdbeec48e3482fa57ae3aa2a56ef3b" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="12fa4d5c6aeb498f8e64fb9a84a97144">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#67fdbeec48e3482fa57ae3aa2a56ef3b" transform="translate(2, 2)" p:filter="url(#12fa4d5c6aeb498f8e64fb9a84a97144)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="a699da3203ce4bee90f1b375cd7aea88"/>
+            <use xlink:href="#67fdbeec48e3482fa57ae3aa2a56ef3b"/>
+            <foreignObject x="0" y="40" width="480" height="0" p:name="text" id="e4c355fa312a42db813da4e505a32002" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="004c1c115bd44d5fb23891ca097bf707" transform="matrix(1,0,0,1,160,565)"><p:metadata><p:property name="box">80,240</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,12.000000000000004</p:property><p:property name="fillColor">#314E60FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="240" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(49, 78, 96); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="f5a76572c97544b29dba412a4bc2130b" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="f7d3ddfbe9cf4843ba4cd274f1d262fa">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#f5a76572c97544b29dba412a4bc2130b" transform="translate(2, 2)" p:filter="url(#f7d3ddfbe9cf4843ba4cd274f1d262fa)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="5877fbb6ed454d1283dc31443b515090"/>
+            <use xlink:href="#f5a76572c97544b29dba412a4bc2130b"/>
+            <foreignObject x="12" y="120" width="56" height="0" p:name="text" id="469b0c9724b24dd880000b63703453ec" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="ecac9259f233485b8648b3306268bc0b" transform="matrix(1,0,0,1,560,400)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,8</p:property><p:property name="fillColor">#743E1EFF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(116, 62, 30); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="e5d7d3175b84478989dc5ca7b9cfd500" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="23bcf8317a524de79a206c267a9977df">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#e5d7d3175b84478989dc5ca7b9cfd500" transform="translate(2, 2)" p:filter="url(#23bcf8317a524de79a206c267a9977df)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="85fef3847d3e4ca1b9383b9ebed5f264"/>
+            <use xlink:href="#e5d7d3175b84478989dc5ca7b9cfd500"/>
+            <foreignObject x="8" y="80" width="64" height="0" p:name="text" id="8fc67434c698427993e225e38e4efba9" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="9849cde274924c69b9b8d0ae94f74797" transform="matrix(1,0,0,1,0,400)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,8</p:property><p:property name="fillColor">#743E1EFF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(116, 62, 30); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="ba3b9ed9a11b4904a386e3829142ce77" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="f2a141f176f84a02bc9cfb83b6f14ad7">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#ba3b9ed9a11b4904a386e3829142ce77" transform="translate(2, 2)" p:filter="url(#f2a141f176f84a02bc9cfb83b6f14ad7)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="7240e163513e44b8974264e6b5633a26"/>
+            <use xlink:href="#ba3b9ed9a11b4904a386e3829142ce77"/>
+            <foreignObject x="8" y="80" width="64" height="0" p:name="text" id="5c395f6c453940c6a85c5c9fc8ef570c" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="1562c1c788564e0a9708ca850151afec" transform="matrix(1,0,0,1,160,480)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,8</p:property><p:property name="fillColor">#E41811FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(228, 24, 17); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="69d0c64fcc974182bc761b19f2d8d0a6" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="8b4745d7cd054cc79824d616d9d74b34">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#69d0c64fcc974182bc761b19f2d8d0a6" transform="translate(2, 2)" p:filter="url(#8b4745d7cd054cc79824d616d9d74b34)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="87c3fed0e7824e5f8887c6bee9443837"/>
+            <use xlink:href="#69d0c64fcc974182bc761b19f2d8d0a6"/>
+            <foreignObject x="8" y="80" width="64" height="0" p:name="text" id="9b0929105fc14f1b86fe8099073488da" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="20140a1c05434a95a6afd0d6cef78215" transform="matrix(1,0,0,1,160,240)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,0</p:property><p:property name="fillColor">#000000FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="86f4ed38d0e449f1acc82fdfbabad172" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="bc4fa243bfed4c6ab913cf47d2c31be3">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#86f4ed38d0e449f1acc82fdfbabad172" transform="translate(2, 2)" p:filter="url(#bc4fa243bfed4c6ab913cf47d2c31be3)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="a6f2a256a1e648959fafc3ff39776e83"/>
+            <use xlink:href="#86f4ed38d0e449f1acc82fdfbabad172"/>
+            <foreignObject x="0" y="80" width="80" height="0" p:name="text" id="da6f6c35262e45968d1d7929766f606d" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="92d29e73682a44fd84212bb73e38ab6e" transform="matrix(1,0,0,1,400,560)"><p:metadata><p:property name="box">80,240</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,12.000000000000004</p:property><p:property name="fillColor">#314E60FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="240" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(49, 78, 96); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="472394fe51b643f499a80f4a13c70384" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="7fdb3094c3fa44e780c3d7f45d807023">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#472394fe51b643f499a80f4a13c70384" transform="translate(2, 2)" p:filter="url(#7fdb3094c3fa44e780c3d7f45d807023)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="4a16aa9fd1db46658cb7fc42734b369b"/>
+            <use xlink:href="#472394fe51b643f499a80f4a13c70384"/>
+            <foreignObject x="12" y="120" width="56" height="0" p:name="text" id="4baed49a9d43453fb87c2508a44c3e5b" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="0a6fe47ab4994253b2b5fe081d3e185c" transform="matrix(1,0,0,1,320,480)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,8</p:property><p:property name="fillColor">#E41811FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(228, 24, 17); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="35426771bfdb4585b63514cd10e80f0b" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="07aa38a04dbe4123942bd066e1e19cac">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#35426771bfdb4585b63514cd10e80f0b" transform="translate(2, 2)" p:filter="url(#07aa38a04dbe4123942bd066e1e19cac)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="f3c4094400ef49b8b4f4736c343d6145"/>
+            <use xlink:href="#35426771bfdb4585b63514cd10e80f0b"/>
+            <foreignObject x="8" y="80" width="64" height="0" p:name="text" id="18cf75dc1b18421abbddf1a541f413c2" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="5c8456cf2b274fe8b358b270ff7ebaee" transform="matrix(1,0,0,1,480,480)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,8</p:property><p:property name="fillColor">#E41811FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(228, 24, 17); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="ce0ba6d725e7424cb803c3f70a9a246f" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="c073048e2c794f8f948f33887f23c10e">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#ce0ba6d725e7424cb803c3f70a9a246f" transform="translate(2, 2)" p:filter="url(#c073048e2c794f8f948f33887f23c10e)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="8d56ce259edf43ae894112a9b4c3a17f"/>
+            <use xlink:href="#ce0ba6d725e7424cb803c3f70a9a246f"/>
+            <foreignObject x="8" y="80" width="64" height="0" p:name="text" id="44c8294379134dba80ce3a685a080542" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="f134cdb7d3a946e2b84513b60bbba359" transform="matrix(1,0,0,1,160,240)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,0</p:property><p:property name="fillColor">#000000FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="0191457b74d24ff58cd7880e6ad4ec73" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="d858c1eb82cc477495372d1953b23751">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#0191457b74d24ff58cd7880e6ad4ec73" transform="translate(2, 2)" p:filter="url(#d858c1eb82cc477495372d1953b23751)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="33c88e2e8bf741e9a99b915133ab7d5b"/>
+            <use xlink:href="#0191457b74d24ff58cd7880e6ad4ec73"/>
+            <foreignObject x="0" y="80" width="80" height="0" p:name="text" id="e7e400cf04de44af80d13ba5f82c2bc6" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g><g p:type="Shape" p:def="Evolus.Common:RoundedRect" id="16385ad6d88e4d088f93cb2dcbfd49ad" transform="matrix(1,0,0,1,320,240)"><p:metadata><p:property name="box">80,160</p:property><p:property name="withBlur">false</p:property><p:property name="radius">0,0</p:property><p:property name="textPadding">0,0</p:property><p:property name="fillColor">#000000FF</p:property><p:property name="strokeColor">#1B3280FF</p:property><p:property name="strokeStyle">0|</p:property><p:property name="textContent">
+                </p:property><p:property name="textFont">"Liberation Sans",Arial,sans-serif|normal|normal|13px|none</p:property><p:property name="textColor">#000000FF</p:property><p:property name="textAlign">1,1</p:property></p:metadata>
+
+            <defs>
+                <rect width="80" height="160" rx="0" ry="0" x="0" y="0" style="stroke-width: 0; fill: rgb(0, 0, 0); fill-opacity: 1; stroke: rgb(27, 50, 128); stroke-opacity: 1;" p:name="rrRect" id="fcce3aa7b2be4de98e2c9418836ce822" transform="translate(0,0)"/>
+                <filter height="1.2558399" y="-0.12792" width="1.06396" x="-0.03198" p:name="shadingFilter" id="0e5dc3c4a98b4dffaf24271e39aca07a">
+                    <feGaussianBlur stdDeviation="1" in="SourceAlpha"/>
+                </filter>
+            </defs>
+            <use xlink:href="#fcce3aa7b2be4de98e2c9418836ce822" transform="translate(2, 2)" p:filter="url(#0e5dc3c4a98b4dffaf24271e39aca07a)" style="opacity: 0.5; visibility: hidden; display: none;" p:heavy="true" p:name="bgCopy" id="55897e52c49e448085658f51c38dbbf4"/>
+            <use xlink:href="#fcce3aa7b2be4de98e2c9418836ce822"/>
+            <foreignObject x="0" y="80" width="80" height="0" p:name="text" id="d57f06a081e549b4891041962895f1df" style="font-family: &quot;Liberation Sans&quot;, Arial, sans-serif; font-size: 13px; font-weight: normal; font-style: normal; text-decoration: none; fill: rgb(0, 0, 0); fill-opacity: 1; color: rgb(0, 0, 0); text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml">
+                </div></foreignObject>
+        </g></g></g></svg>
