@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     # instanziazione wrapper del client e registrazione sul server
     client: Client = Client()
-    client.playerid = "p3"
+    client.playerid = "p4"
     server.registerClient(client)
 
     # inizializzazione DAO
