@@ -10,6 +10,9 @@ from view.viewcomposers.iviewcomposer import IViewComposer
 from view.viewcomposers.templates import Templates
 from view.viewmanager.machinestates.iclientstate import IClientState
 
+#TODO DA RIMUOVERE
+from view.viewmanager.machinestates.tempsecondaiterazionestate import *
+
 
 class ChooseBobState(IClientState):
     def __init__(self):
@@ -40,7 +43,8 @@ class ChooseBobState(IClientState):
             self._server.chooseBob(data["bob_id"])
 
         if messageinput == GameMessages.MAPREADY:
-            print("* * * TUTTO E' PRONTO PER GIOCARE * * * ")
+            # TODO DA MODIFICARE
+            newstate = TempSecondaIterazioneState()
 
         return newstate
 

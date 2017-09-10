@@ -14,6 +14,9 @@ from view.viewcomposers.pygame.templates.pgmodeselectiontemplate import PyGameMo
 from view.viewcomposers.templates import Templates
 from view.viewcomposers.iviewcomposer import IViewComposer
 
+# TODO DA RIMUOVERE
+from view.viewcomposers.pygame.templates.pgsecondaiterazionetemplate import PyGameSecondaIterazioneTemplate
+
 
 class PyGameComposer(IViewComposer):
     def __init__(self):
@@ -42,7 +45,9 @@ class PyGameComposer(IViewComposer):
             Templates.MAINMENU: PyGameMainMenuTemplate(),
             Templates.GAMESELECTION: PyGameModeSelectionTemplate(),
             Templates.GAMEWAIT: PyGameGameWaitingTemplate(),
-            Templates.CHOOSEBOB: PyGameBobSelectionTemplate()
+            Templates.CHOOSEBOB: PyGameBobSelectionTemplate(),
+            # TODO DA RIMUOVERE
+            Templates.SECONDAITERAZIONE: PyGameSecondaIterazioneTemplate()
         }
 
         # template mostrato a schermo correntemente

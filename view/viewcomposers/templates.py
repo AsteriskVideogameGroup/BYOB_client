@@ -6,3 +6,5 @@ class Templates(Enum):
     GAMESELECTION: int = 1
     GAMEWAIT: int = 2
     CHOOSEBOB: int = 3
+    # TODO DA RIMUOVERE
+    SECONDAITERAZIONE: int = 999
