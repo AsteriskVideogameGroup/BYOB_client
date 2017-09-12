@@ -1,8 +1,7 @@
 import json
 from typing import Dict
 
-from foundations.easy_dependency_injection.utils.DataSource import DataSource
-
+from foundations.ioc.utils.DataSource import DataSource
 from foundations.ioc.utils.InjectionSource import InjectionSource
 
 
