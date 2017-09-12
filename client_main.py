@@ -1,14 +1,11 @@
 from foundations.dao.idaoabstractfactory import IDAOAbstractFactory
-from foundations.easy_dependency_injection.FEDContainer import FEDContainer
-from foundations.easy_dependency_injection.naiveimplementation.DepthFirstGraphICTranslator import \
-    DepthFirstGraphICTranslator
-from foundations.easy_dependency_injection.naiveimplementation.JSONSource import JSONSource
-from foundations.easy_dependency_injection.naiveimplementation.NaiveLibraryImporter import NaiveLibraryImporter
-from foundations.easy_dependency_injection.utils.InjContentTranslator import InjContentTranslator
-from foundations.easy_dependency_injection.utils.InjectionSource import InjectionSource
-from foundations.easy_dependency_injection.utils.LibraryInporter import LibraryImporter
-from foundations.inversionofcontrol.iioccontainer import IIoCContainer
-from foundations.inversionofcontrol.ioccontainer import InversionOfControlContainer
+from foundations.ioc.FEDContainer import FEDContainer
+from foundations.ioc.naiveimplementation.DepthFirstGraphICTranslator import DepthFirstGraphICTranslator
+from foundations.ioc.naiveimplementation.JSONSource import JSONSource
+from foundations.ioc.naiveimplementation.NaiveLibraryImporter import NaiveLibraryImporter
+from foundations.ioc.utils.InjContentTranslator import InjContentTranslator
+from foundations.ioc.utils.InjectionSource import InjectionSource
+from foundations.ioc.utils.LibraryInporter import LibraryImporter
 from foundations.network.clienthandling.client import Client
 from foundations.network.corba.corbamanagerfactory import CorbaManagerFactory
 from foundations.network.corba.icorbamanager import ICorbaManager
@@ -16,7 +13,6 @@ from foundations.network.serverwrapper.serverwrapper import ServerWrapper
 from view.viewmanager.clientstatemachine import ClientStateMachine
 from view.viewmanager.machinestates.iclientstate import IClientState
 from view.viewmanager.machinestates.mainmenustate import MainMenuState
-
 
 if __name__ == "__main__":
 
